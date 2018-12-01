@@ -10,7 +10,7 @@ const navBuilder = () => {
       </div>
       <div id="nav-links">
         <button class="btn btn-secondary">Login</button>
-        <button class="btn btn-secondary">Messages</button>
+        <button class="btn btn-secondary" id="navbar-button-messages">Messages</button>
         <button class="btn btn-secondary">Articles</button>
         <button class="btn btn-secondary">Events</button>
         <button class="btn btn-secondary">Weather</button>
