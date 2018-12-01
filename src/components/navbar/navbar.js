@@ -15,16 +15,16 @@ const navbarEvents = () => {
       });
     } else if (e.target.id === 'navbar-button-messages') {
       $('#auth').hide();
-      $('#component-here').hide();
+      $('#component-here').show();
     } else if (e.target.id === 'navbar-button-articles') {
       $('#auth').hide();
-      $('#component-here').hide();
+      $('#component-here').show();
     } else if (e.target.id === 'navbar-button-events') {
       $('#auth').hide();
-      $('#component-here').hide();
+      $('#component-here').show();
     } else if (e.target.id === 'navbar-button-weather') {
       $('#auth').hide();
-      $('#component-here').hide();
+      $('#component-here').show();
     } else {
       // click authentication
       $('#auth').show();
