@@ -1,5 +1,5 @@
-import apiKeys from '../../../../db/apiKeys.json';
 import axios from 'axios';
+import apiKeys from '../../../../db/apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
@@ -12,3 +12,5 @@ const msgGetter = () => new Promise((resolve, reject) => {
       reject(error);
     });
 });
+
+export default { msgGetter };
