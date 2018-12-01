@@ -1,9 +1,8 @@
-import realNiceComponent from './components/RealNiceComponent/RealNiceComponent';
-
+import navbar from './components/navbar/navbar';
 import './index.scss';
 
 const initialize = () => {
-  realNiceComponent();
+  navbar.navBuilder();
 };
 
 initialize();
