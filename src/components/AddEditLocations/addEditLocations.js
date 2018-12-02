@@ -1,4 +1,5 @@
 import $ from 'jquery';
+// import locationData from '../../data/weatherData';
 
 const formBuilder = (location) => {
   const form = `
@@ -21,6 +22,24 @@ const printFormToDom = () => {
   $('#add-edit-location').html(domString).show();
 };
 
-printFormToDom();
+// const getttingZipFromForm = () => {
+//   const location = {
+//     zip_code: $('#form-zip-code').val(),
+//   };
+//   return location;
+// };
+
+// const addNewLocation = () => {
+//   const newLocation = getttingZipFromForm();
+//   locationData.addNewLocation(newLocation)
+//     .then(() => {
+//       $('#add-edit-location').html('').show();
+//       $('#friends').hide();
+
+//     })
+//     .catch((error) => {
+//       console.error('error', error);
+//     });
+// };
 
 export default printFormToDom;
