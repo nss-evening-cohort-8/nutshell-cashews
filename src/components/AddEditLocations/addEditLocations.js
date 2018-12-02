@@ -1,10 +1,10 @@
 import $ from 'jquery';
 
-const formBuilder = () => {
+const formBuilder = (location) => {
   const form = `
   <div class="">
     <label for="form-zip-code">Zip Code</label>
-    <input type="text" class="form-control" value="" id="form-zip-code" placeholder="Type zip code here...">
+    <input type="text" class="form-control" value="${location.zip_code}" id="form-zip-code" placeholder="Type zip code here...">
   </div>
   `;
   return form;
