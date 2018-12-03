@@ -1,25 +1,30 @@
-import axios from 'axios';
-import apiKeys from '../../../db/apiKeys.json';
+import $ from 'jquery';
+import eventsData from './eventsData';
 
-const firebaseUrl = apiKeys.firebaseKeys.databaseURL;
+const eventsPrinter = (eventsArray) => {
+  let eventsCards = '';
+  eventsArray.forEach((event) => {
+    eventsCards += `
+        <h3>${event.event}</h3>
+        <h3>${event.startDate}</h3>
+        <h3>${event.location}</h3>
+        `;
+  });
+  $('#event-div').html(eventsCards);
+};
 
-const getAllEvents = () => new Promise((resolve, reject) => {
-  axios.get(`${firebaseUrl}/events.json`)
-    .then((results) => {
-      const eventsObject = results.data;
-      const eventsArray = [];
-      if (eventsObject !== null) {
-        Object.keys(eventsObject).forEach((eventId) => {
-          eventsObject[eventId].id = eventId;
-          eventsArray.push(eventsObject[eventId]);
-        });
-      }
-      resolve(eventsArray);
-      console.log(eventsArray);
+const eventsPage = () => {
+  eventsData.getAllEvents()
+    .then((eventsArray) => {
+      eventsPrinter(eventsArray);
     })
     .catch((error) => {
-      reject(error);
+      console.log('error in getting events', error);
     });
-});
+};
 
-getAllEvents();
+const intializeEventsPage = () => {
+  eventsPage();
+};
+
+export default intializeEventsPage;
