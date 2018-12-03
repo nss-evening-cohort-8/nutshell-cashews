@@ -1,13 +1,18 @@
 import $ from 'jquery';
+import 'bootstrap';
 import eventsData from './eventsData';
 
 const eventsPrinter = (eventsArray) => {
-  let eventsCards = '';
+  let eventsCards = '<button type="button" class="btn btn-success">Add New Event</button>';
   eventsArray.forEach((event) => {
     eventsCards += `
-        <h3>${event.event}</h3>
-        <h3>${event.startDate}</h3>
-        <h3>${event.location}</h3>
+        <div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">${event.event}</li>
+    <li class="list-group-item">${event.startDate}</li>
+    <li class="list-group-item">${event.location}</li>
+  </ul>
+</div>
         `;
   });
   $('#event-div').html(eventsCards);
