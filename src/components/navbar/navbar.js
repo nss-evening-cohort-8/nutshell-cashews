@@ -10,25 +10,49 @@ const navbarEvents = () => {
       firebase.auth().signOut().then(() => {
         $('#auth').show();
         $('#component-here').hide();
+        $('#messages').hide();
+        $('#articles').hide();
+        $('#events').hide();
+        $('#weather').hide();
       }).catch((err) => {
         console.error('Youre still logged in', err);
       });
     } else if (e.target.id === 'navbar-button-messages') {
       $('#auth').hide();
-      $('#component-here').show();
+      $('#component-here').hide();
+      $('#messages').show();
+      $('#articles').hide();
+      $('#events').hide();
+      $('#weather').hide();
     } else if (e.target.id === 'navbar-button-articles') {
       $('#auth').hide();
-      $('#component-here').show();
+      $('#component-here').hide();
+      $('#messages').hide();
+      $('#articles').show();
+      $('#events').hide();
+      $('#weather').hide();
     } else if (e.target.id === 'navbar-button-events') {
       $('#auth').hide();
-      $('#component-here').show();
+      $('#component-here').hide();
+      $('#messages').hide();
+      $('#articles').hide();
+      $('#events').show();
+      $('#weather').hide();
     } else if (e.target.id === 'navbar-button-weather') {
       $('#auth').hide();
-      $('#component-here').show();
+      $('#component-here').hide();
+      $('#messages').hide();
+      $('#articles').hide();
+      $('#events').hide();
+      $('#weather').show();
     } else {
       // click authentication
-      $('#auth').show();
-      $('#component-here').hide();
+      $('#auth').hide();
+      $('#component-here').show();
+      $('#messages').hide();
+      $('#articles').hide();
+      $('#events').hide();
+      $('#weather').hide();
     }
   });
 };
@@ -41,7 +65,6 @@ const navBuilder = () => {
         <img class="logo" src="${logoImg}"/>
       </div>
       <div id="nav-links">
-        <button class="btn btn-secondary" id="navbar-button-login">Login</button>
         <button class="btn btn-secondary" id="navbar-button-messages">Messages</button>
         <button class="btn btn-secondary" id="navbar-button-articles">Articles</button>
         <button class="btn btn-secondary" id="navbar-button-events">Events</button>
