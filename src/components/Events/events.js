@@ -28,8 +28,4 @@ const eventsPage = () => {
     });
 };
 
-const intializeEventsPage = () => {
-  eventsPage();
-};
-
-export default intializeEventsPage;
+export default eventsPage;

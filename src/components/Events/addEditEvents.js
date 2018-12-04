@@ -37,7 +37,7 @@ const buildNewEventForm = () => {
   };
   let domString = '<h1>Add New Event</h1>';
   domString += formBuilder(emptyEvent);
-  domString += '<button type="button" class="btn btn-primary" id="add-event">Primary</button>';
+  domString += '<button type="button" class="btn btn-primary" id="add-event">Save Event</button>';
   $('#events').html(domString);
 };
 
@@ -55,4 +55,8 @@ const addNewEvent = () => {
 
 $('body').on('click', '#add-event', addNewEvent);
 
-export default buildNewEventForm;
+const bindEvents = () => {
+  $('body').on('click', '#add-event-button', buildNewEventForm); // get clarification
+};
+
+export default bindEvents;
