@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import weatherData from '../../data/weatherData';
-import authHelpers from '../Auth/auth';
+import authHelpers from '../../Helpers/authHelpers';
 
 const printSingleLocation = (location) => {
   const locationString = `
@@ -20,6 +20,7 @@ const printSingleLocation = (location) => {
 const getSingleLocation = (e) => {
   // firebase id
   const locationId = e.target.dataset.dropdownId;
+  // const uid = authHelpers.getCurrentUid();
   console.log(locationId);
   weatherData.getSingleLocation(locationId)
     .then((singleLocation) => {
@@ -39,10 +40,10 @@ const buildDropdown = (locationsArray) => {
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">`;
   if (locationsArray.length) {
     locationsArray.forEach((location) => {
-      dropdown += `<div class="dropdown-item get-single" data-dropdown-id=${location.id}>${location.name}</div>`;
+      dropdown += `<div class="dropdown-item get-single" data-dropdown-id="${location.id}">${location.id}</div>`;
     });
   } else {
-    noLocationMessage += '<h3>You don\'t have a location selected. Enter a new zip code to pick a new location.</h3>';
+    noLocationMessage += '<div>You dont have a location selected. Enter a new zip code to pick a new location.</div>';
   }
   dropdown += '</div></div>';
   $('#dropdown-container').html(dropdown);

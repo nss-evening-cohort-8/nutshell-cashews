@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import weatherData from '../../../data/weatherData';
 import initializeWeatherPage from '../weatherPage';
+import authHelpers from '../../../Helpers/authHelpers';
 // import weatherApiData from '../../../../db/weatherApiKey.json';
 
 
@@ -28,6 +29,7 @@ const printFormToDom = () => {
 const gettingZipFromForm = () => {
   const location = {
     zipcode: $('#form-zip-code').val(),
+    userUid: authHelpers.getCurrentUid(),
   };
   // const zip = $('#form-zip-code').val();
   return location;
@@ -38,7 +40,7 @@ const addNewLocation = () => {
   weatherData.addNewLocation(newLocation)
     .then(() => {
       $('#add-edit-location').html('').show();
-      $('#locations').hide();
+      $('#weather').hide();
       initializeWeatherPage();
     })
     .catch((error) => {
