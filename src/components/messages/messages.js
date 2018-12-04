@@ -1,18 +1,39 @@
 import $ from 'jquery';
-import msgFactory from '../../helpers/data/messageData/msgFactory';
+import msgFactory from '../../Helpers/data/messageData/msgFactory';
+import './messages.scss';
 
-const printMessages = () => {
-  let domString = ``
+const printMessages = (msgObj) => {
+  let domString = '<div>';
+  $.each(msgObj, (key, value) => {
+    const time = new Date(value.timestamp);
+    domString += `<p>${value.message}</p>
+    <p>${time}</p>`;
+  });
+  domString += '</div>';
+  $('#chatbox').append(domString);
 };
 
 const getMessages = () => {
   msgFactory.msgGetter()
     .then((data) => {
-      console.log(data);
+      printMessages(data);
     })
     .catch((error) => {
       console.error(error);
     });
 };
 
-export default { getMessages };
+const msgInput = () => {
+  const domString = `<div id="chatbox"></div>
+  <div>
+    <input id="msg-input" type="text" placeholder="message..."/>
+  </div>`;
+  $('#messages').append(domString);
+};
+
+const initMsgPage = () => {
+  msgInput();
+  getMessages();
+};
+
+export default { initMsgPage };
