@@ -15,7 +15,7 @@ const eventsPrinter = (eventsArray) => {
 </div>
         `;
   });
-  $('#event-div').html(eventsCards);
+  $('#events').html(eventsCards);
 };
 
 const eventsPage = () => {
