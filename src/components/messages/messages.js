@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import msgFactory from '../../Helpers/data/messageData/msgFactory';
 import './messages.scss';
+import 'firebase/auth';
 
 const printMessages = (msgObj) => {
   let domString = '<div>';
