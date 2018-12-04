@@ -22,4 +22,9 @@ const getAllEvents = () => new Promise((resolve, reject) => {
     });
 });
 
-export default { getAllEvents };
+const addNewEvent = eventObject => axios.post(`${firebaseUrl}/events.json`, JSON.stringify(eventObject));
+
+export default {
+  getAllEvents,
+  addNewEvent,
+};
