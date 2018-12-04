@@ -12,7 +12,7 @@ const printArticles = (article) => {
     <button class="btn btn-info edit-btn" data-edit-id=${article.id}>Edit</button>
     </div>
   `;
-  $('#articles').html(articleString);
+  $('#single-article').html(articleString);
 };
 
 const getSingleArticle = (e) => {
@@ -43,7 +43,7 @@ const buildDropdown = (articleArray) => {
     dropdown += '<div class="dropdown-item">You have no articles.</div>';
   }
   dropdown += '</div></div>';
-  $('#dropdown-container').html(dropdown);
+  $('#dropdown-article').html(dropdown);
 };
 
 const articlePage = () => {
@@ -62,7 +62,7 @@ const deleteArticle = (e) => {
   articleData.deleteArticle(idToDelete)
     .then(() => {
       articlePage();
-      $('#articles').html('');
+      $('#single-article').html('');
     })
     .catch((error) => {
       console.error('error in deleting article', error);

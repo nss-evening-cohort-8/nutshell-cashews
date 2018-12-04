@@ -3,6 +3,8 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import './navbar.scss';
 import messages from '../messages/messages';
+import initializeArticlePage from '../ArticlesPage/articlesPage';
+import showAddFormArticle from '../ArticlesPage/addEditArticles';
 
 const navbarEvents = () => {
   $('#nav-links').on('click', (e) => {
@@ -15,6 +17,10 @@ const navbarEvents = () => {
         $('#articles').hide();
         $('#events').hide();
         $('#weather').hide();
+        $('#show-article-form').hide();
+        $('#dropdown-article').hide();
+        $('#single-article').hide();
+        $('#myButton').hide();
       }).catch((err) => {
         console.error('Youre still logged in', err);
       });
@@ -25,6 +31,10 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').hide();
       $('#weather').hide();
+      $('#show-article-form').hide();
+      $('#dropdown-article').hide();
+      $('#single-article').hide();
+      $('#myButton').hide();
       messages.initMsgPage();
     } else if (e.target.id === 'navbar-button-articles') {
       $('#auth').hide();
@@ -33,6 +43,13 @@ const navbarEvents = () => {
       $('#articles').show();
       $('#events').hide();
       $('#weather').hide();
+      $('#dropdown-article').show();
+      $('#single-article').show();
+      $('#show-article-form').show();
+      $('#myButton').show();
+      initializeArticlePage.initializeArticlePage();
+      $('#show-article-form').on('click', showAddFormArticle.buildAddForm);
+      console.log('hello');
     } else if (e.target.id === 'navbar-button-events') {
       $('#auth').hide();
       $('#component-here').hide();
@@ -40,6 +57,10 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').show();
       $('#weather').hide();
+      $('#show-article-form').hide();
+      $('#dropdown-article').hide();
+      $('#single-article').hide();
+      $('#myButton').hide();
     } else if (e.target.id === 'navbar-button-weather') {
       $('#auth').hide();
       $('#component-here').hide();
@@ -47,6 +68,10 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').hide();
       $('#weather').show();
+      $('#show-article-form').hide();
+      $('#dropdown-article').hide();
+      $('#single-article').hide();
+      $('#myButton').hide();
     } else {
       // click authentication
       $('#auth').hide();
@@ -55,6 +80,10 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').hide();
       $('#weather').hide();
+      $('#show-article-form').hide();
+      $('#dropdown-article').hide();
+      $('#single-article').hide();
+      $('#myButton').hide();
     }
   });
 };
