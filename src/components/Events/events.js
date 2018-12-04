@@ -6,7 +6,7 @@ const eventsPrinter = (eventsArray) => {
   let eventsCards = '<button type="button" id="add-event-button" class="btn btn-success">Add New Event</button>';
   eventsArray.forEach((event) => {
     eventsCards += `
-        <div class="card" style="width: 18rem;">
+        <div class="card d-inline-block m-4" style="width: 18rem;">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">${event.event}</li>
     <li class="list-group-item">${event.location}</li>
