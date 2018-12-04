@@ -37,11 +37,11 @@ const getSingleLocation = locationId => new Promise((resolve, reject) => {
 });
 
 
-const deleteLocation = locationId => axios.delete(`${firebaseUrl}/friends/${locationId}.json`);
+const deleteLocation = locationId => axios.delete(`${firebaseUrl}/weather/${locationId}.json`);
 
-const addNewLocation = locationObject => axios.post(`${firebaseUrl}/friends.json`, JSON.stringify(locationObject));
+const addNewLocation = locationObject => axios.post(`${firebaseUrl}/weather.json`, JSON.stringify(locationObject));
 
-const updateLocation = (locationObject, locationId) => axios.put(`${firebaseUrl}/friends/${locationId}.json`, JSON.stringify(locationObject));
+const updateLocation = (locationObject, locationId) => axios.put(`${firebaseUrl}/weather/${locationId}.json`, JSON.stringify(locationObject));
 
 // eslint-disable-next-line max-len
 // const updatedIsAvoiding = (friendId, isAvoiding) => axios.patch(`${firebaseUrl}/friends/${friendId}.json`, { isAvoiding });

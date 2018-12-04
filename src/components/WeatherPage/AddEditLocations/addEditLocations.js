@@ -28,8 +28,9 @@ const printFormToDom = () => {
 
 const gettingZipFromForm = () => {
   const location = {
-    zipcode: $('#form-zip-code').val(),
+    isCurrent: false,
     userUid: authHelpers.getCurrentUid(),
+    zipcode: $('#form-zip-code').val(),
   };
   // const zip = $('#form-zip-code').val();
   return location;
@@ -48,6 +49,8 @@ const addNewLocation = () => {
     });
 };
 
-$('component-here').on('click', '#add-location', addNewLocation);
+$('body').on('click', '#add-location', addNewLocation);
+$('body').on('click', '#get-sing', addNewLocation);
+$('body').on('click', '#add-location', addNewLocation);
 
 export default printFormToDom;
