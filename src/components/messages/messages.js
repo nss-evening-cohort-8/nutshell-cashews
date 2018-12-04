@@ -1,7 +1,7 @@
 import $ from 'jquery';
+import authHelpers from '../../Helpers/authHelpers';
 import msgFactory from '../../Helpers/data/messageData/msgFactory';
 import './messages.scss';
-import 'firebase/auth';
 
 const printMessages = (msgObj) => {
   let domString = '<div>';
@@ -24,12 +24,27 @@ const getMessages = () => {
     });
 };
 
+const newMsg = () => {
+  const msgObject = {
+    userUid: authHelpers.getCurrentUid(),
+    message: $('#msg-input').val(),
+    timestamp: Date.now(),
+    isEdited: false,
+  };
+  return msgObject;
+};
+
 const msgInput = () => {
   const domString = `<div id="chatbox"></div>
   <div>
     <input id="msg-input" type="text" placeholder="message..."/>
+    <button id="submit-message">Submit</button>
   </div>`;
   $('#messages').append(domString);
+  $('#submit-message').on('click', () => {
+    msgFactory.msgPoster(newMsg());
+    getMessages();
+  });
 };
 
 const initMsgPage = () => {

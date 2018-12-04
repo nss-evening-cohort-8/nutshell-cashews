@@ -13,4 +13,14 @@ const msgGetter = () => new Promise((resolve, reject) => {
     });
 });
 
-export default { msgGetter };
+const msgPoster = newMessage => new Promise((resolve, reject) => {
+  axios.post(`${baseUrl}/messages.json`, JSON.stringify(newMessage))
+    .then((result) => {
+      resolve(result);
+    })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
+export default { msgGetter, msgPoster };
