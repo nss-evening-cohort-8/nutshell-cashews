@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import './navbar.scss';
 import weatherPage from '../WeatherPage/weatherPage';
+import messages from '../messages/messages';
 
 const navbarEvents = () => {
   $('#nav-links').on('click', (e) => {
@@ -25,6 +26,7 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').hide();
       $('#weather').hide();
+      messages.initMsgPage();
     } else if (e.target.id === 'navbar-button-articles') {
       $('#auth').hide();
       $('#component-here').hide();
