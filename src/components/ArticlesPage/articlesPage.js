@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import authHelpers from '../../helpers/authHelpers';
-import articleData from '../../helpers/data/taskData';
+import authHelpers from '../../Helpers/authHelpers';
+import articleData from '../../Helpers/data/articlesData';
 
 const printArticles = (article) => {
   const articleString = `
@@ -19,7 +19,7 @@ const getSingleArticle = (e) => {
   // firebase id
   const articleId = e.target.dataset.dropdownId;
   const uid = authHelpers.getCurrentUid();
-  articleData.getSingleTask(articleId)
+  articleData.getSingleArticle(articleId)
     .then((singleArticle) => {
       console.log('uid', uid);
       printArticles(singleArticle);
@@ -29,4 +29,54 @@ const getSingleArticle = (e) => {
     });
 };
 
-export default { printArticles };
+const buildDropdown = (articleArray) => {
+  let dropdown = `<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Pick an Article
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">`;
+  if (articleArray.length) {
+    articleArray.forEach((article) => {
+      dropdown += `<div class="dropdown-item get-single" data-dropdown-id=${article.id}>${article.title}</div>`;
+    });
+  } else {
+    dropdown += '<div class="dropdown-item">You have no articles.</div>';
+  }
+  dropdown += '</div></div>';
+  $('#dropdown-container').html(dropdown);
+};
+
+const articlePage = () => {
+  const uid = authHelpers.getCurrentUid();
+  articleData.getAllArticles(uid)
+    .then((articleArray) => {
+      buildDropdown(articleArray);
+    })
+    .catch((error) => {
+      console.error('error in getting articles', error);
+    });
+};
+
+const deleteArticle = (e) => {
+  const idToDelete = e.target.dataset.deleteId;
+  articleData.deleteArticle(idToDelete)
+    .then(() => {
+      articlePage();
+      $('#articles').html('');
+    })
+    .catch((error) => {
+      console.error('error in deleting article', error);
+    });
+};
+
+const bindEvents = () => {
+  $('body').on('click', '.get-single', getSingleArticle);
+  $('body').on('click', '.delete-btn', deleteArticle);
+};
+
+const initializeArticlePage = () => {
+  articlePage();
+  bindEvents();
+};
+
+export default { initializeArticlePage };
