@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import $ from 'jquery';
 import weatherData from '../../data/weatherData';
 import authHelpers from '../../Helpers/authHelpers';
@@ -31,21 +32,38 @@ const getSingleLocation = (e) => {
     });
 };
 
-const buildDropdown = (locationsArray) => {
+// const buildDropdown = (locationsArray) => {
+//   let noLocationMessage = '';
+//   let dropdown = `<div class="dropdown">
+//   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+//     Pick a Location
+//   </button>
+//   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">`;
+//   if (locationsArray.length) {
+//     locationsArray.forEach((location) => {
+//       dropdown += `<div class="dropdown-item get-single" data-dropdown-id="${location.id}">${location.id}</div>`;
+//     });
+//   } else {
+// eslint-disable-next-line max-len
+//     noLocationMessage += '<div>You dont have a location selected. Enter a new zip code to pick a new location.</div>';
+//   }
+//   dropdown += '</div></div>';
+//   $('#dropdown-container').html(dropdown);
+//   $('#component-here').html(noLocationMessage);
+// };
+
+const buildLocationButtons = (locationsArray) => {
   let noLocationMessage = '';
-  let dropdown = `<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Pick a Location
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">`;
+  let dropdown = `
+    <div>`;
   if (locationsArray.length) {
     locationsArray.forEach((location) => {
-      dropdown += `<div class="dropdown-item get-single" data-dropdown-id="${location.id}">${location.id}</div>`;
+      dropdown += `<div class="btn btn-secondary get-single" data-id="${location.id}">${location.id}</div>`;
     });
   } else {
     noLocationMessage += '<div>You dont have a location selected. Enter a new zip code to pick a new location.</div>';
   }
-  dropdown += '</div></div>';
+  dropdown += '</div>';
   $('#dropdown-container').html(dropdown);
   $('#component-here').html(noLocationMessage);
 };
@@ -55,7 +73,8 @@ const weatherPage = () => {
   weatherData.getAllLocations(uid)
     .then((locationsArray) => {
       console.log(locationsArray);
-      buildDropdown(locationsArray);
+      // buildDropdown(locationsArray);
+      buildLocationButtons(locationsArray);
     })
     .catch((error) => {
       console.error('error in getting friends', error);
