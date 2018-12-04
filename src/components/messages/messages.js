@@ -3,7 +3,8 @@ import authHelpers from '../../Helpers/authHelpers';
 import msgFactory from '../../Helpers/data/messageData/msgFactory';
 import './messages.scss';
 
-const printMessages = (msgObj) => {
+const printMessages = (returnedData) => {
+  const msgObj = returnedData;
   let domString = '<div>';
   $.each(msgObj, (key, value) => {
     const time = new Date(value.timestamp);
@@ -43,6 +44,7 @@ const msgInput = () => {
   $('#messages').append(domString);
   $('#submit-message').on('click', () => {
     msgFactory.msgPoster(newMsg());
+    $('#chatbox').html('');
     getMessages();
   });
 };

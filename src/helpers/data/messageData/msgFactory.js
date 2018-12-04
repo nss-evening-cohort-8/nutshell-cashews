@@ -4,7 +4,7 @@ import apiKeys from '../../../../db/apiKeys.json';
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const msgGetter = () => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/messages.json`)
+  axios.get(`${baseUrl}/messages.json?orderBy="timestamp"&startAt=0`)
     .then((result) => {
       resolve(result.data);
     })
