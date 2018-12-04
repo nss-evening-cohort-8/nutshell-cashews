@@ -7,7 +7,11 @@ const checkLoginStatus = (initializeMainPage) => {
     if (user) {
       // $('#component-here').show();
       $('#auth').hide();
-      $('#navbar-button-login').hide();
+      $('#messages').hide();
+      $('#articles').hide();
+      $('#events').hide();
+      $('#weather').hide();
+      $('#component-here').show();
       $('#navbar-button-messages').show();
       $('#navbar-button-articles').show();
       $('#navbar-button-events').show();
@@ -17,7 +21,11 @@ const checkLoginStatus = (initializeMainPage) => {
       initializeMainPage();
     } else {
       $('#auth').show();
-      $('#navbar-button-login').show();
+      $('#messages').hide();
+      $('#articles').hide();
+      $('#events').hide();
+      $('#weather').hide();
+      $('#component-here').hide();
       $('#navbar-button-messages').hide();
       $('#navbar-button-articles').hide();
       $('#navbar-button-events').hide();

@@ -2,6 +2,7 @@ import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import './navbar.scss';
+import weatherPage from '../WeatherPage/weatherPage';
 
 const navbarEvents = () => {
   $('#nav-links').on('click', (e) => {
@@ -9,32 +10,51 @@ const navbarEvents = () => {
     if (e.target.id === 'navbar-button-logout') {
       firebase.auth().signOut().then(() => {
         $('#auth').show();
-        $('#add-edit-location').hide();
         $('#component-here').hide();
+        $('#messages').hide();
+        $('#articles').hide();
+        $('#events').hide();
+        $('#weather').hide();
       }).catch((err) => {
         console.error('Youre still logged in', err);
       });
     } else if (e.target.id === 'navbar-button-messages') {
       $('#auth').hide();
-      $('#add-edit-location').hide();
-      $('#component-here').show();
+      $('#component-here').hide();
+      $('#messages').show();
+      $('#articles').hide();
+      $('#events').hide();
+      $('#weather').hide();
     } else if (e.target.id === 'navbar-button-articles') {
       $('#auth').hide();
-      $('#add-edit-location').hide();
-      $('#component-here').show();
+      $('#component-here').hide();
+      $('#messages').hide();
+      $('#articles').show();
+      $('#events').hide();
+      $('#weather').hide();
     } else if (e.target.id === 'navbar-button-events') {
       $('#auth').hide();
-      $('#add-edit-location').hide();
-      $('#component-here').show();
+      $('#component-here').hide();
+      $('#messages').hide();
+      $('#articles').hide();
+      $('#events').show();
+      $('#weather').hide();
     } else if (e.target.id === 'navbar-button-weather') {
       $('#auth').hide();
-      // $('#component-here').show();
-      $('#add-edit-location').show();
+      $('#component-here').hide();
+      $('#messages').hide();
+      $('#articles').hide();
+      $('#events').hide();
+      $('#weather').show();
+      weatherPage.initializeWeatherPage();
     } else {
       // click authentication
-      $('#auth').show();
-      $('#component-here').hide();
-      $('#add-edit-location').hide();
+      $('#auth').hide();
+      $('#component-here').show();
+      $('#messages').hide();
+      $('#articles').hide();
+      $('#events').hide();
+      $('#weather').hide();
     }
   });
 };
@@ -47,7 +67,6 @@ const navBuilder = () => {
         <img class="logo" src="${logoImg}"/>
       </div>
       <div id="nav-links">
-        <button class="btn btn-secondary" id="navbar-button-login">Login</button>
         <button class="btn btn-secondary" id="navbar-button-messages">Messages</button>
         <button class="btn btn-secondary" id="navbar-button-articles">Articles</button>
         <button class="btn btn-secondary" id="navbar-button-events">Events</button>
