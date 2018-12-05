@@ -68,12 +68,20 @@ const showUpdateForm = (e) => {
     });
 };
 
-
-$('body').on('click', '#add-event', addNewEvent);
+const updateEvent = (e) => {
+  const updatedEvent = gettingEventFromForm();
+  const eventId = e.target.dataset.singleEventId;
+  eventsData.updateEvent(updatedEvent, eventId)
+    .then(() => {
+      intializeEventsPage();
+    });
+};
 
 const bindEvents = () => {
+  $('body').on('click', '#add-event', addNewEvent);
   $('body').on('click', '#add-event-button', buildNewEventForm); // get clarification
   $('body').on('click', '.edit-btn', showUpdateForm);
+  $('body').on('click', '#update-event', updateEvent);
 };
 
 export default bindEvents;

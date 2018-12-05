@@ -26,8 +26,6 @@ const getSingleEvent = eventId => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/events/${eventId}.json`)
     .then((result) => {
       const singleEvent = result.data;
-      singleEvent.id = eventId;
-      console.log(singleEvent);
       resolve(singleEvent);
     })
     .catch((err) => {
@@ -37,8 +35,11 @@ const getSingleEvent = eventId => new Promise((resolve, reject) => {
 
 const addNewEvent = eventObject => axios.post(`${firebaseUrl}/events.json`, JSON.stringify(eventObject));
 
+const updateEvent = (eventObject, eventId) => axios.put(`${firebaseUrl}/events/${eventId}.json`, JSON.stringify(eventObject));
+
 export default {
   getAllEvents,
   getSingleEvent,
   addNewEvent,
+  updateEvent,
 };
