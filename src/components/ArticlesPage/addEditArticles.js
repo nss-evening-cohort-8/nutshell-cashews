@@ -75,8 +75,8 @@ const updateArticle = (e) => {
   const articleId = e.target.dataset.singleEditId;
   articlesData.updateArticle(updatedArticle, articleId)
     .then(() => {
-      $('#add-edit-article').html('').hide();
-      $('#single-article').html('');
+      // $('#add-edit-article').html('').hide();
+      // $('#single-article').html('');
       $('#articles').show();
       initializeArticlesPage();
     })

@@ -45,7 +45,8 @@ const navbarEvents = () => {
       $('#show-article-form').show();
       $('#articleAddButton').show();
       initializeArticlePage.initializeArticlePage();
-      $('#show-article-form').on('click', showAddFormArticle.buildAddForm);
+      // $('#show-article-form').on('click', showAddFormArticle.buildAddForm);
+      showAddFormArticle.buildAddForm();
     } else if (e.target.id === 'navbar-button-events') {
       $('#auth').hide();
       $('#component-here').hide();
