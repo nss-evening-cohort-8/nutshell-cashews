@@ -54,9 +54,7 @@ const addNewLocation = () => {
 //   const locationId = e.target.dataset.dropdownId;
 //   weatherData.updateFriend(updatedIsCurrent, locationId)
 //     .then(() => {
-//       $('#add-edit-location').html('').hide();
-//       $('#single-container').html('');
-//       $('#weather').show();
+
 //       initializeWeatherPage.initializeWeatherPage();
 //     })
 //     .catch((error) => {

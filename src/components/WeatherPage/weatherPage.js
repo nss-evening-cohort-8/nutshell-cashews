@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
 import $ from 'jquery';
+// import { resolve } from 'path';
 import weatherData from '../../data/weatherData';
 import authHelpers from '../../Helpers/authHelpers';
 // import addEditLocations from '../WeatherPage/AddEditLocations/addEditLocations';
@@ -35,7 +36,13 @@ const getSingleLocation = (e) => {
   // const uid = authHelpers.getCurrentUid();
   weatherData.getSingleLocation(locationId)
     .then((singleLocation) => {
-      printSingleLocation(singleLocation);
+      weatherData.makeLocationsFalse()
+        .then(() => {
+          weatherData.updatedIsCurrent(locationId, true)
+            .then(() => {
+              printSingleLocation(singleLocation);
+            });
+        });
     })
     .catch((error) => {
       console.error('error in getting one friend', error);
@@ -88,23 +95,24 @@ const deleteLocation = (e) => {
     });
 };
 
-const updateIsCurrent = (e) => {
-  const locationId = e.target.dataset;
-  console.log(locationId);
-  // const isCurrent = e.target.checked;
-  weatherData.updatedIsCurrent(locationId)
-    .then(() => {
+// const updateIsCurrent = (e) => {
+//   const locationId = e.target.dataset;
+//   console.log(locationId);
+//   // const isCurrent = e.target.checked;
+//   weatherData.updatedIsCurrent(locationId)
+//     .then(() => {
 
-    })
-    .catch((err) => {
-      console.error('error in updating flag', err);
-    });
-};
+//     })
+//     .catch((err) => {
+//       console.error('error in updating flag', err);
+//     });
+// };
+
 
 const bindEvents = () => {
   $('body').on('click', '.get-single', getSingleLocation);
   $('body').on('click', '.delete-btn', deleteLocation);
-  $('body').on('click', '.get-single', updateIsCurrent);
+  // $('body').on('click', '.get-single', updateIsCurrent);
 };
 
 const initializeWeatherPage = () => {
