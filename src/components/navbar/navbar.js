@@ -20,7 +20,7 @@ const navbarEvents = () => {
         $('#show-article-form').hide();
         $('#dropdown-article').hide();
         $('#single-article').hide();
-        $('#myButton').hide();
+        $('#articleAddButton').hide();
       }).catch((err) => {
         console.error('Youre still logged in', err);
       });
@@ -34,7 +34,7 @@ const navbarEvents = () => {
       $('#show-article-form').hide();
       $('#dropdown-article').hide();
       $('#single-article').hide();
-      $('#myButton').hide();
+      $('#articleAddButton').hide();
       messages.initMsgPage();
     } else if (e.target.id === 'navbar-button-articles') {
       $('#auth').hide();
@@ -46,10 +46,9 @@ const navbarEvents = () => {
       $('#dropdown-article').show();
       $('#single-article').show();
       $('#show-article-form').show();
-      $('#myButton').show();
+      $('#articleAddButton').show();
       initializeArticlePage.initializeArticlePage();
       $('#show-article-form').on('click', showAddFormArticle.buildAddForm);
-      console.log('hello');
     } else if (e.target.id === 'navbar-button-events') {
       $('#auth').hide();
       $('#component-here').hide();
@@ -60,7 +59,7 @@ const navbarEvents = () => {
       $('#show-article-form').hide();
       $('#dropdown-article').hide();
       $('#single-article').hide();
-      $('#myButton').hide();
+      $('#articleAddButton').hide();
     } else if (e.target.id === 'navbar-button-weather') {
       $('#auth').hide();
       $('#component-here').hide();
@@ -71,7 +70,7 @@ const navbarEvents = () => {
       $('#show-article-form').hide();
       $('#dropdown-article').hide();
       $('#single-article').hide();
-      $('#myButton').hide();
+      $('#articleAddButton').hide();
     } else {
       // click authentication
       $('#auth').hide();
@@ -83,7 +82,7 @@ const navbarEvents = () => {
       $('#show-article-form').hide();
       $('#dropdown-article').hide();
       $('#single-article').hide();
-      $('#myButton').hide();
+      $('#articleAddButton').hide();
     }
   });
 };

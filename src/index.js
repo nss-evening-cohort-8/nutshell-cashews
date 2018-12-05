@@ -1,4 +1,6 @@
 import './index.scss';
+import $ from 'jquery';
+import 'bootstrap';
 import firebase from 'firebase/app';
 import apiKeys from '../db/apiKeys.json';
 import navbar from './components/navbar/navbar';
@@ -11,6 +13,7 @@ const initialize = () => {
   navbar.navBuilder();
   authHelpers.checkLoginStatus(printDash.printDash);
   loginButton.loginButton();
+  $('#articleAddButton').hide();
 };
 
 initialize();
