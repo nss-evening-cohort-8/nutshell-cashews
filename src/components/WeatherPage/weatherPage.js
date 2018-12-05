@@ -3,6 +3,7 @@
 import $ from 'jquery';
 import weatherData from '../../data/weatherData';
 import authHelpers from '../../Helpers/authHelpers';
+// import addEditLocations from '../WeatherPage/AddEditLocations/addEditLocations';
 
 const printSingleLocation = (location) => {
   // let current = location.isCurrent;
@@ -55,6 +56,7 @@ const buildDropdown = (locationsArray) => {
   } else {
     // eslint-disable-next-line max-len
     noLocationMessage += '<div>You dont have a location selected. Enter a new zip code to pick a new location.</div>';
+    // addEditLocations.printFormToDom();
   }
   dropdown += '</div></div>';
   $('#dropdown-container').html(dropdown);
@@ -86,24 +88,23 @@ const deleteLocation = (e) => {
     });
 };
 
-// const updateIsCurrent = (e) => {
-//   const locationId = e.target.dataset;
-//   console.log(e.target);
-//   console.log(Object.values());
-//   // const isCurrent = e.target.checked;
-//   weatherData.updatedIsCurrent(locationId)
-//     .then(() => {
+const updateIsCurrent = (e) => {
+  const locationId = e.target.dataset;
+  console.log(locationId);
+  // const isCurrent = e.target.checked;
+  weatherData.updatedIsCurrent(locationId)
+    .then(() => {
 
-//     })
-//     .catch((err) => {
-//       console.error('error in updating flag', err);
-//     });
-// };
+    })
+    .catch((err) => {
+      console.error('error in updating flag', err);
+    });
+};
 
 const bindEvents = () => {
   $('body').on('click', '.get-single', getSingleLocation);
   $('body').on('click', '.delete-btn', deleteLocation);
-  // $('body').on('click', '.text-center', updateIsCurrent);
+  $('body').on('click', '.get-single', updateIsCurrent);
 };
 
 const initializeWeatherPage = () => {
