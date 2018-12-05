@@ -26,21 +26,27 @@ const deleteMsgEvent = () => {
   });
 };
 
-const editMsgEvent = () => {
+const editMsgEvent = (messageKey, updatedInfo) => {
+  $('#edit-submit').on('click', () => {
+    msgFactory.msgEditer(messageKey, updatedInfo)
+      .then(() => {
+        getMessages();
+      });
+  });
+};
+
+const msgEditButton = () => {
   $('.message-detail').on('click', '.edit-message', (e) => {
     const messageKey = e.target.dataset.editMessage;
     const updatedInfo = newMsg(true);
-    console.log('messageKey:', messageKey);
-    console.log('upadtedInfo:', updatedInfo);
     const parentDiv = e.currentTarget.closest('.message-detail');
     const currentMsg = $(parentDiv).find('.msg-value').text();
     $('#msg-input').val(currentMsg);
-    // msgFactory.msgEditer(messageKey, updatedInfo)
-    //   .then(() => {
-    //     getMessages();
-    //   });
+    $('#submit-message').attr('id', 'edit-submit');
+    editMsgEvent(messageKey, updatedInfo);
   });
 };
+
 
 const printMessages = (returnedData) => {
   const msgObj = returnedData;
@@ -67,7 +73,7 @@ const printMessages = (returnedData) => {
   domString += '</div>';
   $('#chatbox').append(domString);
   deleteMsgEvent();
-  editMsgEvent();
+  msgEditButton();
 };
 
 const getMessages = () => {
@@ -84,11 +90,11 @@ const getMessages = () => {
     });
 };
 
-const newMsg = (editState) => {
+const newMsg = (editState, timeValue) => {
   const msgObject = {
     userUid: authHelpers.getCurrentUid(),
     message: $('#msg-input').val(),
-    timestamp: Date.now(),
+    timestamp: timeValue,
     isEdited: editState,
     displayName: getCurrentUsername(),
   };
@@ -97,7 +103,7 @@ const newMsg = (editState) => {
 
 const newMsgEvent = () => {
   $('#submit-message').on('click', () => {
-    msgFactory.msgPoster(newMsg(false))
+    msgFactory.msgPoster(newMsg(false, Date.now()))
       .then(() => {
         getMessages();
         $('#msg-input').val('');
