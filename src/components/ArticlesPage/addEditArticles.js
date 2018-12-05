@@ -45,7 +45,7 @@ const addNewArticle = () => {
   const newArticle = gettingArticleFromForm();
   articlesData.addNewArticle(newArticle)
     .then(() => {
-      $('#add-edit-article').html('').hide();
+      // $('#add-edit-article').html('').hide();
       $('#article').show();
       initializeArticlesPage();
     })

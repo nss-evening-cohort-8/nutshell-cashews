@@ -18,7 +18,6 @@ const navbarEvents = () => {
         $('#events').hide();
         $('#weather').hide();
         $('#show-article-form').hide();
-        $('#dropdown-article').hide();
         $('#single-article').hide();
         $('#articleAddButton').hide();
       }).catch((err) => {
@@ -32,7 +31,6 @@ const navbarEvents = () => {
       $('#events').hide();
       $('#weather').hide();
       $('#show-article-form').hide();
-      $('#dropdown-article').hide();
       $('#single-article').hide();
       $('#articleAddButton').hide();
       messages.initMsgPage();
@@ -43,7 +41,6 @@ const navbarEvents = () => {
       $('#articles').show();
       $('#events').hide();
       $('#weather').hide();
-      $('#dropdown-article').show();
       $('#single-article').show();
       $('#show-article-form').show();
       $('#articleAddButton').show();
@@ -57,7 +54,6 @@ const navbarEvents = () => {
       $('#events').show();
       $('#weather').hide();
       $('#show-article-form').hide();
-      $('#dropdown-article').hide();
       $('#single-article').hide();
       $('#articleAddButton').hide();
     } else if (e.target.id === 'navbar-button-weather') {
@@ -68,7 +64,6 @@ const navbarEvents = () => {
       $('#events').hide();
       $('#weather').show();
       $('#show-article-form').hide();
-      $('#dropdown-article').hide();
       $('#single-article').hide();
       $('#articleAddButton').hide();
     } else {
@@ -80,7 +75,6 @@ const navbarEvents = () => {
       $('#events').hide();
       $('#weather').hide();
       $('#show-article-form').hide();
-      $('#dropdown-article').hide();
       $('#single-article').hide();
       $('#articleAddButton').hide();
     }

@@ -15,7 +15,6 @@ const getAllArticles = () => new Promise((resolve, reject) => {
         });
       }
       resolve(articleArray);
-      console.log(articleArray);
     })
     .catch((error) => {
       reject(error);
