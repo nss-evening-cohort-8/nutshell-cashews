@@ -26,6 +26,7 @@ const getSingleEvent = eventId => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/events/${eventId}.json`)
     .then((result) => {
       const singleEvent = result.data;
+      singleEvent.id = eventId;
       resolve(singleEvent);
     })
     .catch((err) => {

@@ -60,7 +60,7 @@ const showUpdateForm = (e) => {
     .then((singleEvent) => {
       let theString = '<h1>Update EVent</h1>';
       theString += formBuilder(singleEvent);
-      theString += `<button id="update-event" data-single-event-id=${singleEvent.event}>Update Event<button>`;
+      theString += `<button id="update-event" data-single-event-id=${singleEvent.id}>Update Event<button>`;
       $('#events').html(theString);
     })
     .catch((error) => {
