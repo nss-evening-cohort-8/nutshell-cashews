@@ -49,7 +49,23 @@ const addNewLocation = () => {
     });
 };
 
+const updateIsCurrent = (e) => {
+  const updatedIsCurrent = gettingZipFromForm();
+  const locationId = e.target.dataset.dropdownId;
+  weatherData.updateFriend(updatedIsCurrent, locationId)
+    .then(() => {
+      $('#add-edit-location').html('').hide();
+      $('#single-container').html('');
+      $('#weather').show();
+      initializeWeatherPage.initializeWeatherPage();
+    })
+    .catch((error) => {
+      console.error('error', error);
+    });
+};
+
 $('body').on('click', '#add-location', addNewLocation);
 $('body').on('click', '#get-sing', addNewLocation);
+$('body').on('click', '#get-single', updateIsCurrent);
 
 export default printFormToDom;

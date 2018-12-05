@@ -7,7 +7,6 @@ import messages from '../messages/messages';
 
 const navbarEvents = () => {
   $('#nav-links').on('click', (e) => {
-    console.log(e.target.id);
     if (e.target.id === 'navbar-button-logout') {
       firebase.auth().signOut().then(() => {
         $('#auth').show();

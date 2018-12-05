@@ -8,7 +8,6 @@ const getAllLocations = userUid => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/weather.json?orderBy="userUid"&equalTo="${userUid}"`)
     .then((results) => {
       const locationsObject = results.data;
-      console.log(locationsObject);
       const locationsArray = [];
       if (locationsObject !== null) {
         Object.keys(locationsObject).forEach((locationId) => {

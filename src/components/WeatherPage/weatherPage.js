@@ -61,29 +61,11 @@ const buildDropdown = (locationsArray) => {
   $('#single-container').html(noLocationMessage);
 };
 
-// const buildLocationButtons = (locationsArray) => {
-//   let noLocationMessage = '';
-//   let dropdown = `
-//     <div>`;
-//   if (locationsArray.length) {
-//     locationsArray.forEach((location) => {
-//       dropdown += `<div class="btn btn-secondary get-single" data-button-id="${location.id}">${location.id}</div>`;
-//     });
-//   } else {
-//     noLocationMessage += '<div>You dont have a location selected. Enter a new zip code to pick a new location.</div>';
-//   }
-//   dropdown += '</div>';
-//   $('#dropdown-container').html(dropdown);
-//   $('#single-container').html(noLocationMessage);
-// };
-
 const weatherPage = () => {
   const uid = authHelpers.getCurrentUid();
   weatherData.getAllLocations(uid)
     .then((locationsArray) => {
-      console.log(locationsArray);
       buildDropdown(locationsArray);
-      // buildLocationButtons(locationsArray);
     })
     .catch((error) => {
       console.error('error in getting friends', error);

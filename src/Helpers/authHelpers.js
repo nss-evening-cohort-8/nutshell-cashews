@@ -17,7 +17,6 @@ const checkLoginStatus = (initializeMainPage) => {
       $('#navbar-button-events').show();
       $('#navbar-button-weather').show();
       $('#navbar-button-logout').show();
-      console.log('the user', user);
       initializeMainPage();
     } else {
       $('#auth').show();

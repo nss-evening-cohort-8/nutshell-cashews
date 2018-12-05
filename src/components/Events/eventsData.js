@@ -15,7 +15,6 @@ const getAllEvents = () => new Promise((resolve, reject) => {
         });
       }
       resolve(eventsArray);
-      console.log(eventsArray);
     })
     .catch((error) => {
       reject(error);
