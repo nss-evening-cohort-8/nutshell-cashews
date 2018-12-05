@@ -5,7 +5,7 @@ import initializeArticlesPage from './articlesPage';
 
 const formBuilder = (articles) => {
   const form = `
-  <div class="form-group">
+  <div class="form-group d-flex flex-column articleFun">
     <label for="form-article-name">Name:</label>
     <input type="text" class="form-control" value="${articles.title}" id="form-article-title" placeholder="Article Title Goes Here">
     <input type="text" class="form-control" value="${articles.synopsis}" id="form-article-synopsis" placeholder="Article Synopsis Goes Here">

@@ -3,8 +3,8 @@ import apiKeys from '../../../db/apiKeys.json';
 
 const firebaseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const getAllArticles = uid => new Promise((resolve, reject) => {
-  axios.get(`${firebaseUrl}/articles.json?orderBy="userUid"&equalTo="${uid}"`)
+const getAllArticles = () => new Promise((resolve, reject) => {
+  axios.get(`${firebaseUrl}/articles.json`)
     .then((results) => {
       const articleObject = results.data;
       const articleArray = [];
@@ -15,23 +15,24 @@ const getAllArticles = uid => new Promise((resolve, reject) => {
         });
       }
       resolve(articleArray);
+      console.log(articleArray);
     })
     .catch((error) => {
       reject(error);
     });
 });
 
-const getSingleArticle = articleId => new Promise((resolve, reject) => {
-  axios.get(`${firebaseUrl}/articles/${articleId}.json`)
-    .then((result) => {
-      const singleArticle = result.data;
-      singleArticle.id = articleId;
-      resolve(singleArticle);
-    })
-    .catch((error) => {
-      reject(error);
-    });
-});
+// const getSingleArticle = articleId => new Promise((resolve, reject) => {
+//   axios.get(`${firebaseUrl}/articles/${articleId}.json`)
+//     .then((result) => {
+//       const singleArticle = result.data;
+//       singleArticle.id = articleId;
+//       resolve(singleArticle);
+//     })
+//     .catch((error) => {
+//       reject(error);
+//     });
+// });
 
 const deleteArticle = articleId => axios.delete(`${firebaseUrl}/articles/${articleId}.json`);
 
@@ -42,7 +43,7 @@ const updateArticle = (articleObject, articleId) => axios.put(`${firebaseUrl}/ar
 
 export default {
   getAllArticles,
-  getSingleArticle,
+  // getSingleArticle,
   deleteArticle,
   addNewArticle,
   updateArticle,

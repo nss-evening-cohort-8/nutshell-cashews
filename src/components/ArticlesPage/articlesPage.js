@@ -2,8 +2,10 @@ import $ from 'jquery';
 import authHelpers from '../../Helpers/authHelpers';
 import articleData from '../../Helpers/data/articlesData';
 
-const printArticles = (article) => {
-  const articleString = `
+const printArticles = (articles) => {
+  let articleString = '';
+  articles.forEach((article) => {
+    articleString += `
   <div>
     <h1>${article.title}</h1>
     <p>${article.synopsis}</p>
@@ -12,6 +14,7 @@ const printArticles = (article) => {
     <button class="btn btn-info edit-btn" data-edit-id=${article.id}>Edit</button>
     </div>
   `;
+  });
   $('#single-article').html(articleString);
 };
 
@@ -29,28 +32,30 @@ const getSingleArticle = (e) => {
     });
 };
 
-const buildDropdown = (articleArray) => {
-  let dropdown = `<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Pick an Article
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">`;
-  if (articleArray.length) {
-    articleArray.forEach((article) => {
-      dropdown += `<div class="dropdown-item get-single" data-dropdown-id=${article.id}>${article.title}</div>`;
-    });
-  } else {
-    dropdown += '<div class="dropdown-item">You have no articles.</div>';
-  }
-  dropdown += '</div></div>';
-  $('#dropdown-article').html(dropdown);
-};
+// const buildDropdown = (articleArray) => {
+//   let dropdown = `<div class="dropdown">
+//   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu
+// Button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+//     Pick an Article
+//   </button>
+//   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">`;
+//   if (articleArray.length) {
+//     articleArray.forEach((article) => {
+//       dropdown += `<div class="dropdown-item ge
+// t-single" data-dropdown-id=${article.id}>${article.title}</div>`;
+//     });
+//   } else {
+//     dropdown += '<div class="dropdown-item">You have no articles.</div>';
+//   }
+//   dropdown += '</div></div>';
+//   $('#dropdown-article').html(dropdown);
+// };
 
 const articlePage = () => {
-  const uid = authHelpers.getCurrentUid();
-  articleData.getAllArticles(uid)
+  // const uid = authHelpers.getCurrentUid();
+  articleData.getAllArticles()
     .then((articleArray) => {
-      buildDropdown(articleArray);
+      printArticles(articleArray);
     })
     .catch((error) => {
       console.error('error in getting articles', error);
