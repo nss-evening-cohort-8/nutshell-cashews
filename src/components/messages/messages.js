@@ -27,11 +27,16 @@ const deleteMsgEvent = () => {
 };
 
 const editMsgEvent = (key, isEdited) => {
+  const keyProp = key;
+  const editBool = isEdited;
   $('#edit-submit').on('click', () => {
     const updatedMsg = $('#msg-input').val();
-    msgFactory.msgEditer(key, isEdited)
+    console.log('keyProp:', keyProp);
+    console.log('editBool:', editBool);
+    console.log('updatedMsg:', updatedMsg);
+    msgFactory.msgEditer(keyProp, editBool)
       .then(() => {
-        msgFactory.msgEditedMessage(key, updatedMsg);
+        msgFactory.msgEditedMessage(keyProp, updatedMsg);
       })
       .then(() => {
         getMessages();
@@ -42,7 +47,7 @@ const editMsgEvent = (key, isEdited) => {
 const msgEditButton = () => {
   $('.message-detail').on('click', '.edit-message', (e) => {
     const messageKey = e.target.dataset.editMessage;
-    const updatedInfo = newMsg(true);
+    const updatedInfo = true;
     const parentDiv = e.currentTarget.closest('.message-detail');
     const currentMsg = $(parentDiv).find('.msg-value').text();
     $('#msg-input').val(currentMsg);
