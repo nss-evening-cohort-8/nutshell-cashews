@@ -41,8 +41,8 @@ const addNewLocation = () => {
   weatherData.addNewLocation(newLocation)
     .then(() => {
       $('#add-edit-location').html('').show();
-      $('#weather').hide();
-      initializeWeatherPage();
+      // $('#weather').hide();
+      initializeWeatherPage.initializeWeatherPage();
     })
     .catch((error) => {
       console.error('error', error);
@@ -51,6 +51,5 @@ const addNewLocation = () => {
 
 $('body').on('click', '#add-location', addNewLocation);
 $('body').on('click', '#get-sing', addNewLocation);
-$('body').on('click', '#add-location', addNewLocation);
 
 export default printFormToDom;

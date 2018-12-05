@@ -43,6 +43,8 @@ const addNewLocation = locationObject => axios.post(`${firebaseUrl}/weather.json
 
 const updateLocation = (locationObject, locationId) => axios.put(`${firebaseUrl}/weather/${locationId}.json`, JSON.stringify(locationObject));
 
+const updatedIsCurrent = (locationId, isCurrent) => axios.patch(`${firebaseUrl}/weather/${locationId}.json`, { isCurrent });
+
 // eslint-disable-next-line max-len
 // const updatedIsAvoiding = (friendId, isAvoiding) => axios.patch(`${firebaseUrl}/friends/${friendId}.json`, { isAvoiding });
 
@@ -52,5 +54,5 @@ export default {
   deleteLocation,
   addNewLocation,
   updateLocation,
-  // updatedIsAvoiding,
+  updatedIsCurrent,
 };
