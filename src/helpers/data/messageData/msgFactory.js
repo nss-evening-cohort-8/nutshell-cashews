@@ -41,11 +41,14 @@ const msgDeleter = keyToDelete => new Promise((resolve, reject) => {
     });
 });
 
-const msgEditer = (msgKey, updatedMsg) => axios.put(`${baseUrl}/messages/${msgKey}.json`, JSON.stringify(updatedMsg));
+const msgEditer = (msgKey, isEdited) => axios.patch(`${baseUrl}/messages/${msgKey}.json`, { isEdited });
+
+const msgEditedMessage = (msgKey, message) => axios.patch(`${baseUrl}/messages/${msgKey}.json`, { message });
 
 export default {
   msgGetter,
   msgPoster,
   msgDeleter,
   msgEditer,
+  msgEditedMessage,
 };

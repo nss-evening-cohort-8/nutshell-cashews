@@ -26,9 +26,13 @@ const deleteMsgEvent = () => {
   });
 };
 
-const editMsgEvent = (messageKey, updatedInfo) => {
+const editMsgEvent = (key, isEdited) => {
   $('#edit-submit').on('click', () => {
-    msgFactory.msgEditer(messageKey, updatedInfo)
+    const updatedMsg = $('#msg-input').val();
+    msgFactory.msgEditer(key, isEdited)
+      .then(() => {
+        msgFactory.msgEditedMessage(key, updatedMsg);
+      })
       .then(() => {
         getMessages();
       });
@@ -90,12 +94,12 @@ const getMessages = () => {
     });
 };
 
-const newMsg = (editState, timeValue) => {
+const newMsg = () => {
   const msgObject = {
     userUid: authHelpers.getCurrentUid(),
     message: $('#msg-input').val(),
-    timestamp: timeValue,
-    isEdited: editState,
+    timestamp: Date.now(),
+    isEdited: false,
     displayName: getCurrentUsername(),
   };
   return msgObject;
@@ -103,7 +107,7 @@ const newMsg = (editState, timeValue) => {
 
 const newMsgEvent = () => {
   $('#submit-message').on('click', () => {
-    msgFactory.msgPoster(newMsg(false, Date.now()))
+    msgFactory.msgPoster(newMsg())
       .then(() => {
         getMessages();
         $('#msg-input').val('');
