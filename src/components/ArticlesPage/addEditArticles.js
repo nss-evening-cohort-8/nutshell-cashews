@@ -6,6 +6,7 @@ import initializeArticlesPage from './articlesPage';
 const formBuilder = (articles) => {
   const form = `
   <div class="form-group d-flex flex-column articleFun">
+    <h2>Add New Article</h2>
     <label for="form-article-name">Name:</label>
     <input type="text" class="form-control" value="${articles.title}" id="form-article-title" placeholder="Article Title Goes Here">
     <input type="text" class="form-control" value="${articles.synopsis}" id="form-article-synopsis" placeholder="Article Synopsis Goes Here">
@@ -34,8 +35,8 @@ const buildAddForm = () => {
     url: '',
   };
 
-  let domString = '<h2>Add New Article</h2>';
-  domString += formBuilder(emptyArticle);
+  // let domString = '<h2>Add New Article</h2>';
+  let domString = formBuilder(emptyArticle);
   domString += '<button id="add-article">Add Article</button>';
   $('#add-edit-article').html(domString).show();
   $('#articles').hide();
@@ -46,8 +47,8 @@ const addNewArticle = () => {
   articlesData.addNewArticle(newArticle)
     .then(() => {
       // $('#add-edit-article').html('').hide();
-      $('#article').show();
-      initializeArticlesPage();
+      // $('#article').show();
+      initializeArticlesPage.initializeArticlePage();
     })
     .catch((error) => {
       console.error('error', error);
@@ -76,7 +77,7 @@ const updateArticle = (e) => {
   articlesData.updateArticle(updatedArticle, articleId)
     .then(() => {
       // $('#add-edit-article').html('').hide();
-      // $('#single-article').html('');
+      $('#single-article').html('');
       $('#articles').show();
       initializeArticlesPage();
     })
