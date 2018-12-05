@@ -22,9 +22,23 @@ const getAllEvents = () => new Promise((resolve, reject) => {
     });
 });
 
+const getSingleEvent = eventId => new Promise((resolve, reject) => {
+  axios.get(`${firebaseUrl}/events/${eventId}.json`)
+    .then((result) => {
+      const singleEvent = result.data;
+      singleEvent.id = eventId;
+      console.log(singleEvent);
+      resolve(singleEvent);
+    })
+    .catch((err) => {
+      reject(err);
+    });
+});
+
 const addNewEvent = eventObject => axios.post(`${firebaseUrl}/events.json`, JSON.stringify(eventObject));
 
 export default {
   getAllEvents,
+  getSingleEvent,
   addNewEvent,
 };

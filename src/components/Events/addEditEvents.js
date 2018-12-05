@@ -52,11 +52,28 @@ const addNewEvent = () => {
     });
 };
 
+// Update an Event
+
+const showUpdateForm = (e) => {
+  const idToEdit = e.target.dataset.editId;
+  eventsData.getSingleEvent(idToEdit)
+    .then((singleEvent) => {
+      let theString = '<h1>Update EVent</h1>';
+      theString += formBuilder(singleEvent);
+      theString += `<button id="update-event" data-single-event-id=${singleEvent.event}>Update Event<button>`;
+      $('#events').html(theString);
+    })
+    .catch((error) => {
+      console.log('error in getting single event', error);
+    });
+};
+
 
 $('body').on('click', '#add-event', addNewEvent);
 
 const bindEvents = () => {
   $('body').on('click', '#add-event-button', buildNewEventForm); // get clarification
+  $('body').on('click', '.edit-btn', showUpdateForm);
 };
 
 export default bindEvents;

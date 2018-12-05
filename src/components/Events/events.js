@@ -12,6 +12,8 @@ const eventsPrinter = (eventsArray) => {
     <li class="list-group-item">${event.event}</li>
     <li class="list-group-item">${event.location}</li>
     <li class="list-group-item">${time}</li>
+    <button type="button" class="btn btn-primary edit-btn" data-edit-id=${event.event}>Edit</button>
+    <button type="button" class="btn btn-danger" data-delete-id=${event.event}>Delete</button>
   </ul>
 </div>
         `;
