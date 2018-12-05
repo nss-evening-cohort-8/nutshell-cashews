@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
 import $ from 'jquery';
-// import { resolve } from 'path';
 import weatherData from '../../data/weatherData';
 import authHelpers from '../../Helpers/authHelpers';
 // import addEditLocations from '../WeatherPage/AddEditLocations/addEditLocations';
@@ -40,7 +39,12 @@ const getSingleLocation = (e) => {
         .then(() => {
           weatherData.updatedIsCurrent(locationId, true)
             .then(() => {
-              printSingleLocation(singleLocation);
+              weatherData.getSingleWeatherData(singleLocation.zipcode)
+                .then((results) => {
+                  // printSingleLocation(results[0]);
+                  console.log(results);
+                  printSingleLocation(singleLocation);
+                });
             });
         });
     })

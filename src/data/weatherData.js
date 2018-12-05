@@ -4,6 +4,10 @@ import apiKeys from '../../db/apiKeys';
 import authHelpers from '../Helpers/authHelpers';
 
 const firebaseUrl = apiKeys.firebaseKeys.databaseURL;
+// const weatherBitUrl = apiKeys.weatherApiKeys.apiBaseUrl;
+// const tempUnits = apiKeys.weatherApiKeys.unit;
+const weatherBitApi = apiKeys.weatherApiKeys.apiKey;
+
 
 const getAllLocations = userUid => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/weather.json?orderBy="userUid"&equalTo="${userUid}"`)
@@ -23,6 +27,26 @@ const getAllLocations = userUid => new Promise((resolve, reject) => {
     });
 });
 
+
+const getAllWeatherData = zipcode => new Promise((resolve, reject) => {
+  axios.get(`https://api.weatherbit.io/v2.0/current?&postal_code=${zipcode}&country=USUSunits=I${weatherBitApi}`)
+    .then((weatherInfo) => {
+      const weatherObject = weatherInfo.data;
+      const weatherArray = [];
+      if (weatherObject !== null) {
+        Object.keys(weatherObject).forEach((weatherId) => {
+          weatherObject[weatherId].id = weatherId;
+          weatherArray.push(weatherObject[weatherId]);
+        });
+      }
+      resolve(weatherArray);
+    })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
+
 const getSingleLocation = locationId => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/weather/${locationId}.json`)
     .then((result) => {
@@ -36,6 +60,21 @@ const getSingleLocation = locationId => new Promise((resolve, reject) => {
     });
 });
 
+const getSingleWeatherData = zipcode => new Promise((resolve, reject) => {
+  axios.get(`https://api.weatherbit.io/v2.0/current?&postal_code=${zipcode}&country=US&units=I${weatherBitApi}`)
+    .then((weatherInfo) => {
+      const singleWeatherData = weatherInfo.data.data;
+      // axios.get(`${firebaseUrl}/weather/${zipcode}.json`);
+      // singleWeatherData.id = zipcode;
+      resolve(singleWeatherData);
+    })
+    // .then(() => {
+
+    // })
+    .catch((error) => {
+      reject(error);
+    });
+});
 
 const deleteLocation = locationId => axios.delete(`${firebaseUrl}/weather/${locationId}.json`);
 
@@ -76,4 +115,6 @@ export default {
   updateLocation,
   updatedIsCurrent,
   makeLocationsFalse,
+  getAllWeatherData,
+  getSingleWeatherData,
 };
