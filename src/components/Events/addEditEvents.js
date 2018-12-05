@@ -77,11 +77,23 @@ const updateEvent = (e) => {
     });
 };
 
+const deleteEvent = (e) => {
+  const idToDelete = e.target.dataset.deleteId;
+  eventsData.deleteEvent(idToDelete)
+    .then(() => {
+      intializeEventsPage();
+    })
+    .catch((error) => {
+      console.log('error in deleting the event', error);
+    });
+};
+
 const bindEvents = () => {
   $('body').on('click', '#add-event', addNewEvent);
   $('body').on('click', '#add-event-button', buildNewEventForm); // get clarification
   $('body').on('click', '.edit-btn', showUpdateForm);
   $('body').on('click', '#update-event', updateEvent);
+  $('body').on('click', '.delete-btn', deleteEvent);
 };
 
 export default bindEvents;
