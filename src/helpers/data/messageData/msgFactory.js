@@ -41,4 +41,11 @@ const msgDeleter = keyToDelete => new Promise((resolve, reject) => {
     });
 });
 
-export default { msgGetter, msgPoster, msgDeleter };
+const msgEditer = (msgKey, updatedMsg) => axios.put(`${baseUrl}/messages/${msgKey}.json`, JSON.stringify(updatedMsg));
+
+export default {
+  msgGetter,
+  msgPoster,
+  msgDeleter,
+  msgEditer,
+};
