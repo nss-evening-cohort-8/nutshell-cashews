@@ -16,6 +16,16 @@ const arraySorter = (data) => {
   return newArr;
 };
 
+const deleteMsgEvent = () => {
+  $('.delete-message').on('click', (e) => {
+    const messageKey = e.target.dataset.deleteMessage;
+    msgFactory.msgDeleter(messageKey)
+      .then(() => {
+        getMessages();
+      });
+  });
+};
+
 const printMessages = (returnedData) => {
   const msgObj = returnedData;
   const msgArr = [];
@@ -31,17 +41,24 @@ const printMessages = (returnedData) => {
   msgArr.forEach((msg) => {
     const convertTime = new Date(msg.timestamp);
     domString += `<div class="message-detail">
-      <p><strong>${getCurrentUsername()}:</strong> ${msg.message}</p>
+    <p>${msg.displayName ? `<strong>${msg.displayName}:</strong>` : ''} ${msg.message}</p>
       <p>${convertTime}</p>
+      ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-danger delete-message" data-delete-message=${msg.id}>X</button>` : ''}
+      ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-warning edit-message" data-edit-message=${msg.id}>Edit</button>` : ''}
     </div>`;
   });
   // const times
   domString += '</div>';
   $('#chatbox').append(domString);
+  deleteMsgEvent();
 };
 
 const getMessages = () => {
   msgFactory.msgGetter()
+    .then((data) => {
+      $('#chatbox').html('');
+      return data;
+    })
     .then((data) => {
       printMessages(data);
     })
@@ -56,6 +73,7 @@ const newMsg = () => {
     message: $('#msg-input').val(),
     timestamp: Date.now(),
     isEdited: false,
+    displayName: getCurrentUsername(),
   };
   return msgObject;
 };
@@ -68,9 +86,11 @@ const msgInput = () => {
   </div>`;
   $('#messages').append(domString);
   $('#submit-message').on('click', () => {
-    msgFactory.msgPoster(newMsg());
-    $('#chatbox').html('');
-    getMessages();
+    msgFactory.msgPoster(newMsg())
+      .then(() => {
+        getMessages();
+        $('#msg-input').val('');
+      });
   });
 };
 
