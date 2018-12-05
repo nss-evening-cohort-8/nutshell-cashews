@@ -6,11 +6,39 @@ const baseUrl = apiKeys.firebaseKeys.databaseURL;
 const msgGetter = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/messages.json`)
     .then((result) => {
-      resolve(result.data);
+      const messageObject = result.data;
+      const messageArray = [];
+      if (messageObject !== null) {
+        Object.keys(messageObject).forEach((messageId) => {
+          messageObject[messageId].id = messageId;
+          messageArray.push(messageObject[messageId]);
+        });
+      }
+      resolve(messageArray);
     })
     .catch((error) => {
       reject(error);
     });
 });
 
-export default { msgGetter };
+const msgPoster = newMessage => new Promise((resolve, reject) => {
+  axios.post(`${baseUrl}/messages.json`, JSON.stringify(newMessage))
+    .then((result) => {
+      resolve(result);
+    })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
+const msgDeleter = keyToDelete => new Promise((resolve, reject) => {
+  axios.delete(`${baseUrl}/messages/${keyToDelete}.json`)
+    .then((result) => {
+      resolve(result);
+    })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
+export default { msgGetter, msgPoster, msgDeleter };

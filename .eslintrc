@@ -17,6 +17,7 @@
         "allow": ["error", "log"]
       }
     ],
-    "no-debugger": 1
+    "no-debugger": 1,
+    "no-use-before-define": 1
   }
 }
