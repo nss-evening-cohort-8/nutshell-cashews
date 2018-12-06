@@ -15,11 +15,7 @@ const loginButton = () => {
   $('#auth').html(domString);
   $('#google-auth').on('click', () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider); // .then(() => {
-    //   initializeArticlesPage.initializeArticlePage();
-    // }).catch((err) => {
-    //   console.log(err);
-    // });
+    firebase.auth().signInWithPopup(provider);
   });
 };
 

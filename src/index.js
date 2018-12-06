@@ -15,7 +15,6 @@ const initialize = () => {
   authHelpers.checkLoginStatus(printDash.printDash);
   loginButton.loginButton();
   $('#articleAddButton').hide();
-  // $('#add-edit-article').hide();
   intializeEvents();
 };
 
