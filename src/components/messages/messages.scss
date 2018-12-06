@@ -1,7 +1,29 @@
-#chatbox {
+#chat-container {
   margin: 25px auto;
-  width: 90%;
+  width: 75%;
+  min-width: 500px;
   border: 1px solid #000;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+#chatbox {
+  margin: 10px;
+}
+
+// .msg-button-container {
+//   float: right;
+// }
+
+.message-detail {
+  border-top: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-detail:first-of-type {
+  border-top: none;
 }
 
 .is-user {

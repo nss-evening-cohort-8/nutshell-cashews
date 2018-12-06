@@ -73,19 +73,24 @@ const printMessages = (returnedData) => {
   let domString = '<div>';
   msgArr.forEach((msg) => {
     const convertTime = new Date(msg.timestamp).toLocaleTimeString();
-    console.log(convertTime);
-    domString += `<div class="message-detail">
-  <p>${msg.displayName ? `<strong class="${msg.userUid === authHelpers.getCurrentUid() ? 'is-user' : 'other-user'}">${msg.displayName}:</strong>` : ''} ${msg.isEdited ? '(edited)' : ''} <span class="msg-value">${msg.message}</span></p>
-      <p>${convertTime}</p>
-      ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-danger delete-message" data-delete-message=${msg.id}>X</button>` : ''}
-      ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-warning edit-message" data-edit-message=${msg.id}>Edit</button>` : ''}
+    domString += `
+    <div class="message-detail">
+      <div>
+        <p>${msg.displayName ? `<strong class="${msg.userUid === authHelpers.getCurrentUid() ? 'is-user' : 'other-user'}">${msg.displayName}:</strong>` : ''} ${msg.isEdited ? '(edited)' : ''} <span class="msg-value">${msg.message}</span></p>
+        <p>${convertTime}</p>
+      </div>
+      <div class="msg-button-container">
+        ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-warning edit-message" 1data-edit-message=${msg.id}>Edit</button>` : ''}
+        ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-danger delete-message" data-delete-message=${msg.id}>X</button>` : ''}
+      </div>
     </div>`;
   });
-  // const times
   domString += '</div>';
   $('#chatbox').append(domString);
   deleteMsgEvent();
   msgEditButton();
+  const scrollLength = $('#chat-container').prop('scrollHeight');
+  $('#chat-container').scrollTop(scrollLength);
 };
 
 const getMessages = () => {
@@ -131,7 +136,7 @@ const msgInput = () => {
 };
 
 const buildMsgBase = () => {
-  const domString = `<div id="chatbox"></div>
+  const domString = `<div id="chat-container"><div id="chatbox"></div></div>
     <div id="msg-input-container">
     </div>
   </div>`;
