@@ -24,13 +24,20 @@ const printFormToDom = () => {
   domString += formBuilder(emptyLocation);
   domString += '<button class="btn btn-primary" id="add-location">Save Location</button>';
   $('#add-edit-location').html(domString).toggle();
-  // eslint-disable-next-line no-unused-expressions
-  if ($('#add-edit-location').style.display === 'none') {
-    $('#show-location-form').textContent = '+';
-  } else {
-    $('#show-location-form').textContent = '-';
-  }
+  // if ($('#add-edit-location').style.display === '') {
+  //   $('#show-location-form').textContent = '+';
+  // } else {
+  //   $('#show-location-form').textContent = '-';
+  // }
 };
+
+// const logicForAddLocationToggle = () => {
+//   if ($('#add-edit-location').style.display === '') {
+//     $('#show-location-form').textContent = '+';
+//   } else {
+//     $('#show-location-form').textContent = '-';
+//   }
+// };
 
 const gettingZipFromForm = () => {
   const location = {
@@ -70,6 +77,6 @@ const addNewLocation = () => {
 
 $('body').on('click', '#add-location', addNewLocation);
 $('body').on('click', '#get-sing', addNewLocation);
-// $('body').on('click', '#get-single', updateIsCurrent);
+// $('#show-location-form').on('click', logicForAddLocationToggle);
 
 export default printFormToDom;
