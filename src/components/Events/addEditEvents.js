@@ -14,11 +14,23 @@ const formBuilder = (theEvent) => {
   </div>
   <div class="form-group">
     <label for="form-friend-email">Start Date:</label>
-    <input type="text" class="form-control" value="${theEvent.startDate}" id="form-startDate" placeholder="Start Date">
+    <input type="date" class="form-control datecheck" value="${theEvent.startDate}" id="form-startDate" placeholder="Start Date">
   </div>
     `;
   return form;
 };
+
+$(document).ready(() => {
+  $('.datecheck').on('blur', 'input', validatedate);
+  function validatedate() {
+    const text = $('.datecheck input');
+    if (/\d+\/\d+\/\d{4}/.test(text)) { // good input
+    } else { // bad input
+      $('.datecheck input').val('Please use mm/dd/yyyy format');
+    }
+  }
+});
+
 
 const gettingEventFromForm = () => {
   const event = {
