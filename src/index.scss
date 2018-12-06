@@ -4,3 +4,32 @@
 body {
   background-color: $darkgray;
 }
+
+#single-article{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  // background-color: white;
+  // float: left;
+}
+
+#add-edit-article{
+  display: flex;
+  float: right;
+  justify-content: center;
+  flex-direction: column;
+  width: 33%;
+  margin-right: 50px;
+}
+
+
+
+#solo-article{
+  border: 1px black solid;
+  margin: 10px;
+}
+
+#articleAddButton{
+  margin-top: 30px;
+  margin-left: 20px;
+}
