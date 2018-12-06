@@ -1,3 +1,13 @@
 #chatbox {
+  margin: 25px auto;
+  width: 90%;
   border: 1px solid #000;
+}
+
+.is-user {
+  color: rgb(167, 2, 2);
+}
+
+.other-user {
+  color: rgb(0, 0, 155);
 }

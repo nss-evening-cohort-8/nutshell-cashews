@@ -31,9 +31,7 @@ const editMsgEvent = (key, isEdited) => {
   const editBool = isEdited;
   $('#submit-message').on('click', () => {
     const updatedMsg = $('#msg-input').val();
-    console.log('keyProp:', keyProp);
-    console.log('editBool:', editBool);
-    console.log('updatedMsg:', updatedMsg);
+    $('#msg-input').val('').blur();
     msgFactory.msgEditer(keyProp, editBool)
       .then(() => {
         msgFactory.msgEditedMessage(keyProp, updatedMsg)
@@ -74,9 +72,10 @@ const printMessages = (returnedData) => {
   });
   let domString = '<div>';
   msgArr.forEach((msg) => {
-    const convertTime = new Date(msg.timestamp);
+    const convertTime = new Date(msg.timestamp).toLocaleTimeString();
+    console.log(convertTime);
     domString += `<div class="message-detail">
-  <p>${msg.displayName ? `<strong>${msg.displayName}:</strong>` : ''} ${msg.isEdited ? '(edited)' : ''} <span class="msg-value">${msg.message}</span></p>
+  <p>${msg.displayName ? `<strong class="${msg.userUid === authHelpers.getCurrentUid() ? 'is-user' : 'other-user'}">${msg.displayName}:</strong>` : ''} ${msg.isEdited ? '(edited)' : ''} <span class="msg-value">${msg.message}</span></p>
       <p>${convertTime}</p>
       ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-danger delete-message" data-delete-message=${msg.id}>X</button>` : ''}
       ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-warning edit-message" data-edit-message=${msg.id}>Edit</button>` : ''}
