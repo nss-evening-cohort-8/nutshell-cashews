@@ -7,8 +7,42 @@
   },
   "article2": {
     "userUid": "0dHr6i1TH3T0RzaV58fyfUAUrZp2",
-    "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/",
-    "title": "Wormholes Allow Information to Escape Black Holes2",
-    "synopsis": "Check out this recent discovery about workholes2"
+    "url": "https://www.bbcgoodfood.com/recipes/801641/yummy-bread",
+    "title": "Bread is Yummy!",
+    "synopsis": "Check out this yummy article!"
+  },
+  "article3": {
+    "userUid": "0dHr6i1TH3T0RzaV58fyfUAUrZp2",
+    "url": "https://doodlecountryminis.com/",
+    "title": "Mini Golden Doodles",
+    "synopsis": "Check out this website for a mini golden doodle breeder"
+  },
+  "article4": {
+    "userUid": "0dHr6i1TH3T0RzaV58fyfUAUrZp2",
+    "url": "https://www.datascience.com/",
+    "title": "Data Science",
+    "synopsis": "This is a website for data science"
+  },
+  "article5": {
+    "userUid": "0dHr6i1TH3T0RzaV58fyfUAUrZp2",
+    "url": "https://www.anaconda.com/",
+    "title": "Wonderful quick download - Anaconda",
+    "synopsis": "This software is like a little dashboard for your R, Python, and other data related IDE needs!"
+  },
+  "article6": {
+    "userUid": "0dHr6i1TH3T0RzaV58fyfUAUrZp2",
+    "url": "https://www.imdb.com/title/tt0118615/",
+    "title": "Anaconda - The Movie",
+    "synopsis": "This anaconda won't help your data related needs, it will bite them instead!"
+  },"article7": {
+    "userUid": "0dHr6i1TH3T0RzaV58fyfUAUrZp2",
+    "url": "https://www.postgresql.org/",
+    "title": "PostGreSQL",
+    "synopsis": "Here is a great open source option for a SQL database"
+  },"article8": {
+    "userUid": "0dHr6i1TH3T0RzaV58fyfUAUrZp2",
+    "url": "https://www.tableau.com/",
+    "title": "Tableau",
+    "synopsis": "Here is a not so cheap option for data visualization!"
   }
 }
