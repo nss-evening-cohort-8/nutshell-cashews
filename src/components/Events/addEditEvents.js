@@ -24,7 +24,7 @@ const gettingEventFromForm = () => {
   const event = {
     event: $('#form-event').val(),
     location: $('#form-location').val(),
-    startDate: $('#form-startDate').val(),
+    startDate: parseInt($('#form-startDate').val(), 100),
   };
   return event;
 };
@@ -52,11 +52,48 @@ const addNewEvent = () => {
     });
 };
 
+// Update an Event
 
-$('body').on('click', '#add-event', addNewEvent);
+const showUpdateForm = (e) => {
+  const idToEdit = e.target.dataset.editId;
+  eventsData.getSingleEvent(idToEdit)
+    .then((singleEvent) => {
+      let theString = '<h1>Update EVent</h1>';
+      theString += formBuilder(singleEvent);
+      theString += `<button id="update-event" data-single-event-id=${singleEvent.id}>Update Event</button>`;
+      $('#events').html(theString);
+    })
+    .catch((error) => {
+      console.log('error in getting single event', error);
+    });
+};
+
+const updateEvent = (e) => {
+  const updatedEvent = gettingEventFromForm();
+  const eventId = e.target.dataset.singleEventId;
+  eventsData.updateEvent(updatedEvent, eventId)
+    .then(() => {
+      intializeEventsPage();
+    });
+};
+
+const deleteEvent = (e) => {
+  const idToDelete = e.target.dataset.deleteId;
+  eventsData.deleteEvent(idToDelete)
+    .then(() => {
+      intializeEventsPage();
+    })
+    .catch((error) => {
+      console.log('error in deleting the event', error);
+    });
+};
 
 const bindEvents = () => {
+  $('body').on('click', '#add-event', addNewEvent);
   $('body').on('click', '#add-event-button', buildNewEventForm); // get clarification
+  $('body').on('click', '.edit-event-btn', showUpdateForm);
+  $('body').on('click', '#update-event', updateEvent);
+  $('body').on('click', '.delete-event-btn', deleteEvent);
 };
 
 export default bindEvents;
