@@ -3,6 +3,8 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import './navbar.scss';
 import messages from '../messages/messages';
+import initializeArticlePage from '../ArticlesPage/articlesPage';
+import showAddFormArticle from '../ArticlesPage/addEditArticles';
 
 const navbarEvents = () => {
   $('#nav-links').on('click', (e) => {
@@ -33,6 +35,10 @@ const navbarEvents = () => {
       $('#articles').show();
       $('#events').hide();
       $('#weather').hide();
+      initializeArticlePage.styleFunction();
+      initializeArticlePage.initializeArticlePage();
+      $('#show-article-form').on('click', showAddFormArticle.buildAddForm);
+      showAddFormArticle.buildAddForm();
     } else if (e.target.id === 'navbar-button-events') {
       $('#auth').hide();
       $('#component-here').hide();
