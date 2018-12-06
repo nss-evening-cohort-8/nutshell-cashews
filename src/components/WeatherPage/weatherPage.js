@@ -76,7 +76,7 @@ const buildDropdown = (locationsArray) => {
       //   console.log(zipCodeData);
       // });
       console.log(location);
-      dropdown += `<div class="dropdown-item get-single" cursor="pointer" data-dropdown-id="${location.id}">${location.id}</div>`;
+      dropdown += `<div class="dropdown-item get-single" cursor="pointer" data-dropdown-id="${location.id}">${location.zipcode}</div>`;
     });
   } else {
     // eslint-disable-next-line max-len
