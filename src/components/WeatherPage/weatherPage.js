@@ -3,7 +3,7 @@
 import $ from 'jquery';
 import weatherData from '../../data/weatherData';
 import authHelpers from '../../Helpers/authHelpers';
-// import addEditLocations from '../WeatherPage/AddEditLocations/addEditLocations';
+import './Style/weatherPage.scss';
 
 const printSingleLocation = (location) => {
   const locationString = `
@@ -11,7 +11,9 @@ const printSingleLocation = (location) => {
       <h1>${location.city_name}</h1>
       <h3>${location.temp}</h3>
       <p>${location.pod === 'd' ? 'Day' : 'Night'}</p>
-      <img src="https://www.weatherbit.io/static/img/icons/${location.weather.icon}.png">
+      <div class="d-flex justify-content-center">
+      <img id="weatherIcon" class="" src="https://www.weatherbit.io/static/img/icons/${location.weather.icon}.png">
+      </div>
       <p>${location.weather.description}</p>
       <div>
         <button class="btn btn-danger delete-btn" data-delete-id=${location.id}>X</button>
