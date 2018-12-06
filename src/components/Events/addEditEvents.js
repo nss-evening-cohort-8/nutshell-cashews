@@ -24,7 +24,7 @@ const gettingEventFromForm = () => {
   const event = {
     event: $('#form-event').val(),
     location: $('#form-location').val(),
-    startDate: parseInt($('#form-startDate').val(), 10),
+    startDate: parseInt($('#form-startDate').val(), 100),
   };
   return event;
 };
