@@ -35,16 +35,34 @@ const getAllWeatherData = zipcode => new Promise((resolve, reject) => {
       const weatherArray = [];
       if (weatherObject !== null) {
         Object.keys(weatherObject).forEach((weatherId) => {
+          console.log(weatherId);
           weatherObject[weatherId].id = weatherId;
           weatherArray.push(weatherObject[weatherId]);
         });
       }
+      console.log(weatherArray);
       resolve(weatherArray);
     })
     .catch((error) => {
       reject(error);
     });
 });
+
+// const getAllWeatherData = zipcode => new Promise((resolve, reject) => {
+//   axios.get(`https://api.weatherbit.io/v2.0/current?&postal_code=${zipcode}&country=USUSunits=I${weatherBitApi}`)
+//     .then((weatherInfo) => {
+//       const weatherArray = weatherInfo.data.data;
+//       const zipCode = '';
+//       weatherArray.forEach((objectZip) => {
+//         weatherArray[zipcode].zipcode = objectZip;
+//         zipCode.push(objectZip);
+//       });
+//       resolve(zipCode);
+//     })
+//     .catch((error) => {
+//       reject(error);
+//     });
+// });
 
 
 const getSingleLocation = locationId => new Promise((resolve, reject) => {
@@ -62,11 +80,12 @@ const getSingleLocation = locationId => new Promise((resolve, reject) => {
 
 const getSingleWeatherData = zipcode => new Promise((resolve, reject) => {
   axios.get(`https://api.weatherbit.io/v2.0/current?&postal_code=${zipcode}&country=US&units=I${weatherBitApi}`)
-    .then((weatherInfo) => {
-      const singleWeatherData = weatherInfo.data.data;
+    .then((weatherObject) => {
+      const singleWeatherArray = weatherObject.data.data;
       // axios.get(`${firebaseUrl}/weather/${zipcode}.json`);
       // singleWeatherData.id = zipcode;
-      resolve(singleWeatherData);
+      // console.log(weatherObject);
+      resolve(singleWeatherArray);
     })
     // .then(() => {
 

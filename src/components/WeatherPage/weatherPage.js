@@ -41,9 +41,11 @@ const getSingleLocation = (e) => {
           weatherData.updatedIsCurrent(locationId, true)
             .then(() => {
               weatherData.getSingleWeatherData(singleLocation.zipcode)
-                .then((results) => {
-                  printSingleLocation(results[0]);
-                  console.log(results);
+                .then((result) => {
+                  result.forEach((weatherObject) => {
+                    printSingleLocation(weatherObject);
+                  });
+                  console.log(result);
                   // printSingleLocation(singleLocation);
                 });
             });
@@ -63,11 +65,22 @@ const buildDropdown = (locationsArray) => {
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">`;
   if (locationsArray.length) {
     locationsArray.forEach((location) => {
+      // console.log(location);
+      // const cityZip = location.zipcode;
+      // weatherData.getSingleWeatherData(cityZip);
+      // .then((results) => {
+      //   const zipCode = results[0].city_name;
+      //   return zipCode;
+      // })
+      // .then((zipCodeData) => {
+      //   console.log(zipCodeData);
+      // });
+      console.log(location);
       dropdown += `<div class="dropdown-item get-single" cursor="pointer" data-dropdown-id="${location.id}">${location.id}</div>`;
     });
   } else {
     // eslint-disable-next-line max-len
-    noLocationMessage += '<div>You dont have a location selected. Enter a new zip code to pick a new location.</div>';
+    noLocationMessage += '<div>You dont have a location selected. Please add a new location.</div>';
     // addEditLocations.printFormToDom();
   }
   dropdown += '</div></div>';
@@ -80,6 +93,13 @@ const weatherPage = () => {
   weatherData.getAllLocations(uid)
     .then((locationsArray) => {
       buildDropdown(locationsArray);
+      // locationsArray.forEach((locationObject) => {
+      //   const objectZip = locationObject.zipcode;
+      // console.log(objectZip);
+      // weatherData.getSingleWeatherData(objectZip)
+      // .then((results) => {
+      // console.log(results);
+      // console.log(locationsArray);
     })
     .catch((error) => {
       console.error('error in getting friends', error);
