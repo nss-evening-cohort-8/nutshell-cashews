@@ -23,7 +23,13 @@ const printFormToDom = () => {
   let domString = '<h2 Add New Location</h2>';
   domString += formBuilder(emptyLocation);
   domString += '<button class="btn btn-primary" id="add-location">Save Location</button>';
-  $('#add-edit-location').html(domString).show();
+  $('#add-edit-location').html(domString).toggle();
+  // eslint-disable-next-line no-unused-expressions
+  if ($('#add-edit-location').style.display === 'none') {
+    $('#show-location-form').textContent = '+';
+  } else {
+    $('#show-location-form').textContent = '-';
+  }
 };
 
 const gettingZipFromForm = () => {

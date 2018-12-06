@@ -7,19 +7,20 @@ import './Style/weatherPage.scss';
 
 const printSingleLocation = (location) => {
   const locationString = `
-    <div class="card mt-5 mr-4 ml-4 p-3 text-center">
+  <div class="container mb-5 d-flex justify-content-center">
+    <div id="currentLocation" class="card mt-5 mr-4 ml-4 p-3 text-center">
       <h1>${location.city_name}</h1>
       <h3>${location.temp}</h3>
       <p>${location.pod === 'd' ? 'Day' : 'Night'}</p>
       <div class="d-flex justify-content-center">
-      <img id="weatherIcon" class="" src="https://www.weatherbit.io/static/img/icons/${location.weather.icon}.png">
+        <img id="weatherIcon" class="" src="https://www.weatherbit.io/static/img/icons/${location.weather.icon}.png">
       </div>
       <p>${location.weather.description}</p>
       <div>
         <button class="btn btn-danger delete-btn" data-delete-id=${location.id}>X</button>
-        <button class="btn btn-info edit-btn" data-edit-id=${location.id}>Edit</button>
       </div>    
     </div>
+  </div>
   `;
   $('#single-container').html(locationString);
   // if (current === false) {

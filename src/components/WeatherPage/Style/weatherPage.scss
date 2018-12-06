@@ -1,4 +1,11 @@
 #weatherIcon {
   height: 250px;
   width: 250px;
+  animation-name: fadeIn;
+  animation-duration: 2.5s;
+}
+
+#currentLocation {
+  height: 550px;
+  width: 600px;
 }
