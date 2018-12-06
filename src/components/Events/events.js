@@ -12,9 +12,12 @@ const eventsPrinter = (eventsArray) => {
     <li class="list-group-item">${event.event}</li>
     <li class="list-group-item">${event.location}</li>
     <li class="list-group-item">${time}</li>
+    <button type="button" class="btn btn-primary edit-event-btn" data-edit-id=${event.id}>Edit</button>
+    <button type="button" class="btn btn-danger delete-event-btn" data-delete-id=${event.id}>Delete</button>
   </ul>
 </div>
         `;
+    console.log(event);
   });
   $('#events').html(eventsCards);
 };

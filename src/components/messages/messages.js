@@ -26,6 +26,41 @@ const deleteMsgEvent = () => {
   });
 };
 
+const editMsgEvent = (key, isEdited) => {
+  const keyProp = key;
+  const editBool = isEdited;
+  $('#submit-message').on('click', () => {
+    const updatedMsg = $('#msg-input').val();
+    console.log('keyProp:', keyProp);
+    console.log('editBool:', editBool);
+    console.log('updatedMsg:', updatedMsg);
+    msgFactory.msgEditer(keyProp, editBool)
+      .then(() => {
+        msgFactory.msgEditedMessage(keyProp, updatedMsg)
+          .then(() => {
+            getMessages();
+            newMsgEvent();
+          });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
+};
+
+const msgEditButton = () => {
+  $('.message-detail').on('click', '.edit-message', (e) => {
+    const messageKey = e.target.dataset.editMessage;
+    const updatedInfo = true;
+    const parentDiv = e.currentTarget.closest('.message-detail');
+    const currentMsg = $(parentDiv).find('.msg-value').text();
+    $('#msg-input').val(currentMsg);
+    $('#submit-message').off();
+    editMsgEvent(messageKey, updatedInfo);
+  });
+};
+
+
 const printMessages = (returnedData) => {
   const msgObj = returnedData;
   const msgArr = [];
@@ -41,7 +76,7 @@ const printMessages = (returnedData) => {
   msgArr.forEach((msg) => {
     const convertTime = new Date(msg.timestamp);
     domString += `<div class="message-detail">
-    <p>${msg.displayName ? `<strong>${msg.displayName}:</strong>` : ''} ${msg.message}</p>
+  <p>${msg.displayName ? `<strong>${msg.displayName}:</strong>` : ''} ${msg.isEdited ? '(edited)' : ''} <span class="msg-value">${msg.message}</span></p>
       <p>${convertTime}</p>
       ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-danger delete-message" data-delete-message=${msg.id}>X</button>` : ''}
       ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-warning edit-message" data-edit-message=${msg.id}>Edit</button>` : ''}
@@ -51,6 +86,7 @@ const printMessages = (returnedData) => {
   domString += '</div>';
   $('#chatbox').append(domString);
   deleteMsgEvent();
+  msgEditButton();
 };
 
 const getMessages = () => {
@@ -78,13 +114,8 @@ const newMsg = () => {
   return msgObject;
 };
 
-const msgInput = () => {
-  const domString = `<div id="chatbox"></div>
-  <div>
-    <input id="msg-input" type="text" placeholder="message..."/>
-    <button id="submit-message">Submit</button>
-  </div>`;
-  $('#messages').append(domString);
+const newMsgEvent = () => {
+  $('#submit-message').off();
   $('#submit-message').on('click', () => {
     msgFactory.msgPoster(newMsg())
       .then(() => {
@@ -94,8 +125,28 @@ const msgInput = () => {
   });
 };
 
-const initMsgPage = () => {
+const msgInput = () => {
+  const domString = `<input id="msg-input" type="text" placeholder="message..."/>
+    <button id="submit-message">Submit</button>`;
+  $('#msg-input-container').append(domString);
+};
+
+const buildMsgBase = () => {
+  const domString = `<div id="chatbox"></div>
+    <div id="msg-input-container">
+    </div>
+  </div>`;
+  $('#messages').html(domString);
+};
+
+const printMsgInput = () => {
   msgInput();
+  newMsgEvent();
+};
+
+const initMsgPage = () => {
+  buildMsgBase();
+  printMsgInput();
   getMessages();
 };
 
