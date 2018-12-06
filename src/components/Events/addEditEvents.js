@@ -19,20 +19,12 @@ const formBuilder = (theEvent) => {
     `;
   return form;
 };
-const validatedate = () => {
-  const text = $('.datecheck input');
-  if (/\d+\/\d+\/\d{4}/.test(text)) { // good input
-  } else { // bad input
-    $('.datecheck input').val('Please use mm/dd/yyyy format');
-  }
-};
-
 
 const gettingEventFromForm = () => {
   const event = {
     event: $('#form-event').val(),
     location: $('#form-location').val(),
-    startDate: parseInt($('#form-startDate').val(), 100),
+    startDate: parseInt($('#form-startDate').val(), 10),
   };
   return event;
 };
@@ -102,7 +94,6 @@ const bindEvents = () => {
   $('body').on('click', '.edit-event-btn', showUpdateForm);
   $('body').on('click', '#update-event', updateEvent);
   $('body').on('click', '.delete-event-btn', deleteEvent);
-  $('body').on('blur', '.datecheck', validatedate);
 };
 
 export default bindEvents;
