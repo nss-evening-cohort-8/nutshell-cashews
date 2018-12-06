@@ -6,13 +6,13 @@ import authHelpers from '../../Helpers/authHelpers';
 // import addEditLocations from '../WeatherPage/AddEditLocations/addEditLocations';
 
 const printSingleLocation = (location) => {
-  // let current = location.isCurrent;
   const locationString = `
     <div class="card mt-5 mr-4 ml-4 p-3 text-center">
       <h1>${location.city_name}</h1>
       <h3>${location.temp}</h3>
-      <p>${location.pod}</p>
-      <p>${location.zipcode}</p>
+      <p>${location.pod === 'd' ? 'Day' : 'Night'}</p>
+      <img src="https://www.weatherbit.io/static/img/icons/${location.weather.icon}.png">
+      <p>${location.weather.description}</p>
       <div>
         <button class="btn btn-danger delete-btn" data-delete-id=${location.id}>X</button>
         <button class="btn btn-info edit-btn" data-edit-id=${location.id}>Edit</button>
@@ -35,15 +35,16 @@ const getSingleLocation = (e) => {
   // const uid = authHelpers.getCurrentUid();
   weatherData.getSingleLocation(locationId)
     .then((singleLocation) => {
+      console.log(singleLocation);
       weatherData.makeLocationsFalse()
         .then(() => {
           weatherData.updatedIsCurrent(locationId, true)
             .then(() => {
               weatherData.getSingleWeatherData(singleLocation.zipcode)
                 .then((results) => {
-                  // printSingleLocation(results[0]);
+                  printSingleLocation(results[0]);
                   console.log(results);
-                  printSingleLocation(singleLocation);
+                  // printSingleLocation(singleLocation);
                 });
             });
         });
