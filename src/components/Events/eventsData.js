@@ -38,9 +38,12 @@ const addNewEvent = eventObject => axios.post(`${firebaseUrl}/events.json`, JSON
 
 const updateEvent = (eventObject, eventId) => axios.put(`${firebaseUrl}/events/${eventId}.json`, JSON.stringify(eventObject));
 
+const deleteEvent = eventId => axios.delete(`${firebaseUrl}/events/${eventId}.json`);
+
 export default {
   getAllEvents,
   getSingleEvent,
   addNewEvent,
   updateEvent,
+  deleteEvent,
 };
