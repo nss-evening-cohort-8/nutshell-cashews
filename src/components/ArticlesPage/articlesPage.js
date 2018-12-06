@@ -6,12 +6,12 @@ const printArticles = (articles) => {
   let articleString = '';
   articles.forEach((article) => {
     articleString += `
-  <div>
+  <div id="solo-article">
     <h1>${article.title}</h1>
     <p>${article.synopsis}</p>
     <a href="${article.url}">Click here for the full article.</a>
     <button class="btn btn-danger delete-btn" data-delete-id=${article.id}>X</button>
-    <button class="btn btn-info edit-btn" data-edit-id=${article.id}>Edit</button>
+    <button class="btn btn-info edit-btn-art" data-edit-id=${article.id}>Edit</button>
     </div>
   `;
   });

@@ -20,6 +20,7 @@ const navbarEvents = () => {
         $('#show-article-form').hide();
         $('#single-article').hide();
         $('#articleAddButton').hide();
+        $('#add-edit-article').hide();
       }).catch((err) => {
         console.error('Youre still logged in', err);
       });
@@ -33,6 +34,7 @@ const navbarEvents = () => {
       $('#show-article-form').hide();
       $('#single-article').hide();
       $('#articleAddButton').hide();
+      $('#add-edit-article').hide();
       messages.initMsgPage();
     } else if (e.target.id === 'navbar-button-articles') {
       $('#auth').hide();
@@ -44,8 +46,9 @@ const navbarEvents = () => {
       $('#single-article').show();
       $('#show-article-form').show();
       $('#articleAddButton').show();
+      $('#add-edit-article').show();
       initializeArticlePage.initializeArticlePage();
-      // $('#show-article-form').on('click', showAddFormArticle.buildAddForm);
+      $('#show-article-form').on('click', showAddFormArticle.buildAddForm);
       showAddFormArticle.buildAddForm();
     } else if (e.target.id === 'navbar-button-events') {
       $('#auth').hide();
@@ -57,6 +60,7 @@ const navbarEvents = () => {
       $('#show-article-form').hide();
       $('#single-article').hide();
       $('#articleAddButton').hide();
+      $('#add-edit-article').hide();
     } else if (e.target.id === 'navbar-button-weather') {
       $('#auth').hide();
       $('#component-here').hide();
@@ -67,6 +71,7 @@ const navbarEvents = () => {
       $('#show-article-form').hide();
       $('#single-article').hide();
       $('#articleAddButton').hide();
+      $('#add-edit-article').hide();
     } else {
       // click authentication
       $('#auth').hide();
@@ -78,6 +83,7 @@ const navbarEvents = () => {
       $('#show-article-form').hide();
       $('#single-article').hide();
       $('#articleAddButton').hide();
+      $('#add-edit-article').hide();
     }
   });
 };

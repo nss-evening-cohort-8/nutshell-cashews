@@ -6,7 +6,7 @@ import initializeArticlesPage from './articlesPage';
 const formBuilder = (articles) => {
   const form = `
   <div class="form-group d-flex flex-column articleFun">
-    <label for="form-article-name">Name:</label>
+    <label for="form-article-name">Please enter article information below:</label>
     <input type="text" class="form-control" value="${articles.title}" id="form-article-title" placeholder="Article Title Goes Here">
     <input type="text" class="form-control" value="${articles.synopsis}" id="form-article-synopsis" placeholder="Article Synopsis Goes Here">
     <input type="text" class="form-control" value="${articles.url}" id="form-article-url" placeholder="Article URL Goes Here">
@@ -86,7 +86,7 @@ const updateArticle = (e) => {
 };
 
 $('body').on('click', '#add-article', addNewArticle);
-$('body').on('click', '.edit-btn', showEditForm);
+$('body').on('click', '.edit-btn-art', showEditForm);
 $('body').on('click', '#edit-article', updateArticle);
 
 export default { buildAddForm };
