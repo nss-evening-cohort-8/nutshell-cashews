@@ -17,10 +17,6 @@ const navbarEvents = () => {
         $('#articles').hide();
         $('#events').hide();
         $('#weather').hide();
-        $('#show-article-form').hide();
-        $('#single-article').hide();
-        $('#articleAddButton').hide();
-        $('#add-edit-article').hide();
       }).catch((err) => {
         console.error('Youre still logged in', err);
       });
@@ -31,11 +27,7 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').hide();
       $('#weather').hide();
-      $('#show-article-form').hide();
-      $('#single-article').hide();
-      $('#articleAddButton').hide();
       messages.initMsgPage();
-      $('#add-edit-article').hide();
     } else if (e.target.id === 'navbar-button-articles') {
       $('#auth').hide();
       $('#component-here').hide();
@@ -43,10 +35,7 @@ const navbarEvents = () => {
       $('#articles').show();
       $('#events').hide();
       $('#weather').hide();
-      $('#single-article').show();
-      $('#show-article-form').show();
-      $('#articleAddButton').show();
-      $('#add-edit-article').show();
+      initializeArticlePage.styleFunction();
       initializeArticlePage.initializeArticlePage();
       $('#show-article-form').on('click', showAddFormArticle.buildAddForm);
       showAddFormArticle.buildAddForm();
@@ -57,10 +46,6 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').show();
       $('#weather').hide();
-      $('#show-article-form').hide();
-      $('#single-article').hide();
-      $('#articleAddButton').hide();
-      $('#add-edit-article').hide();
     } else if (e.target.id === 'navbar-button-weather') {
       $('#auth').hide();
       $('#component-here').hide();
@@ -68,10 +53,6 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').hide();
       $('#weather').show();
-      $('#show-article-form').hide();
-      $('#single-article').hide();
-      $('#articleAddButton').hide();
-      $('#add-edit-article').hide();
     } else {
       // click authentication
       $('#auth').hide();
@@ -80,10 +61,6 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').hide();
       $('#weather').hide();
-      $('#show-article-form').hide();
-      $('#single-article').hide();
-      $('#articleAddButton').hide();
-      $('#add-edit-article').hide();
     }
   });
 };

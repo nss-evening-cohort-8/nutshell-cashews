@@ -63,7 +63,7 @@ const showEditForm = (e) => {
       domString += formBuilder(singleArticle);
       domString += `<button id="edit-article" data-single-edit-id=${singleArticle.id}>Save Article</button>`;
       $('#add-edit-article').html(domString).show();
-      $('#articles').hide();
+      // $('#articles').hide();
     })
     .catch((error) => {
       console.error('error in getting single for edit', error);

@@ -74,6 +74,15 @@ const deleteArticle = (e) => {
     });
 };
 
+const styleFunction = () => {
+  const domString = `  <div id="articleAddButton">
+  <button id="show-article-form" class="btn btn-success">Add Article</button>
+  </div>
+  <div id="add-edit-article"></div>
+  <div id="single-article"></div>`;
+  $('#articles').html(domString);
+};
+
 const bindEvents = () => {
   $('body').on('click', '.get-single', getSingleArticle);
   $('body').on('click', '.delete-btn', deleteArticle);
@@ -84,4 +93,4 @@ const initializeArticlePage = () => {
   bindEvents();
 };
 
-export default { initializeArticlePage };
+export default { initializeArticlePage, styleFunction };
