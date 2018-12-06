@@ -34,8 +34,8 @@ const navbarEvents = () => {
       $('#show-article-form').hide();
       $('#single-article').hide();
       $('#articleAddButton').hide();
-      $('#add-edit-article').hide();
       messages.initMsgPage();
+      $('#add-edit-article').hide();
     } else if (e.target.id === 'navbar-button-articles') {
       $('#auth').hide();
       $('#component-here').hide();

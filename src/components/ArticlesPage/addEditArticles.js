@@ -38,7 +38,7 @@ const buildAddForm = () => {
   domString += formBuilder(emptyArticle);
   domString += '<button id="add-article">Add Article</button>';
   $('#add-edit-article').html(domString).show();
-  $('#articles').hide();
+  // $('#articles').hide();
 };
 
 const addNewArticle = () => {
