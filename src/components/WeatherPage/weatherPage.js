@@ -8,7 +8,7 @@ import './Style/weatherPage.scss';
 const printSingleLocation = (location) => {
   const locationString = `
   <div class="container mb-5 d-flex justify-content-center">
-    <div id="currentLocation" class="card mt-5 mr-4 ml-4 p-3 text-center">
+    <div id="currentLocation" class="mt-5 mr-4 ml-4 p-3 text-center">
       <h1>${location.city_name}</h1>
       <h3>${location.temp}</h3>
       <p>${location.pod === 'd' ? 'Day' : 'Night'}</p>
@@ -112,7 +112,7 @@ const weatherPage = () => {
 const deleteLocation = (e) => {
   // firebase id
   const idToDelete = e.target.dataset.deleteId;
-  console.log(e.target.dataset);
+  // console.log(e.target.dataset);
   weatherData.deleteLocation(idToDelete)
     .then(() => {
       weatherPage();
