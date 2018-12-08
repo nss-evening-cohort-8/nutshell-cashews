@@ -42,7 +42,8 @@ const singleArticle = () => new Promise((resolve, reject) => {
 });
 
 const singleEvent = () => new Promise((resolve, reject) => {
-  eventsData.getAllEvents()
+  const uid = authHelpers.getCurrentUid();
+  eventsData.getAllEvents(uid)
     .then(data => resolve(data[0]))
     .catch((error) => {
       reject(error);

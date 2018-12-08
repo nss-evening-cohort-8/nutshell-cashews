@@ -3,8 +3,8 @@ import apiKeys from '../../../db/apiKeys.json';
 
 const firebaseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const getAllEvents = () => new Promise((resolve, reject) => {
-  axios.get(`${firebaseUrl}/events.json`)
+const getAllEvents = userUid => new Promise((resolve, reject) => {
+  axios.get(`${firebaseUrl}/events.json?orderBy="userUid"&equalTo="${userUid}"`)
     .then((results) => {
       const eventsObject = results.data;
       const eventsArray = [];
