@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import authHelpers from '../../Helpers/authHelpers';
 import articleData from '../../Helpers/data/articlesData';
 
 const printArticles = (articles) => {
@@ -21,10 +20,8 @@ const printArticles = (articles) => {
 const getSingleArticle = (e) => {
   // firebase id
   const articleId = e.target.dataset.dropdownId;
-  const uid = authHelpers.getCurrentUid();
   articleData.getSingleArticle(articleId)
     .then((singleArticle) => {
-      console.log('uid', uid);
       printArticles(singleArticle);
     })
     .catch((error) => {

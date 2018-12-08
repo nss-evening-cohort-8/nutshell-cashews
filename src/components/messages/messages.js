@@ -53,6 +53,7 @@ const msgEditButton = () => {
     const parentDiv = e.currentTarget.closest('.message-detail');
     const currentMsg = $(parentDiv).find('.msg-value').text();
     $('#msg-input').val(currentMsg);
+    $('#msg-input').focus();
     $('#submit-message').off();
     editMsgEvent(messageKey, updatedInfo);
   });
@@ -72,15 +73,16 @@ const printMessages = (returnedData) => {
   });
   let domString = '<div>';
   msgArr.forEach((msg) => {
-    const convertTime = new Date(msg.timestamp).toLocaleTimeString();
+    let convertTime = new Date(msg.timestamp).toLocaleString();
+    convertTime = convertTime.replace(/:\d{2}(?!:)/, '');
     domString += `
     <div class="message-detail">
       <div>
-        <p>${msg.displayName ? `<strong class="${msg.userUid === authHelpers.getCurrentUid() ? 'is-user' : 'other-user'}">${msg.displayName}:</strong>` : ''} ${msg.isEdited ? '(edited)' : ''} <span class="msg-value">${msg.message}</span></p>
-        <p>${convertTime}</p>
+        <p>${msg.displayName ? `<strong class="${msg.userUid === authHelpers.getCurrentUid() ? 'is-user' : 'other-user'}">${msg.displayName}:</strong>` : ''} ${msg.isEdited ? '<span class="classy">(edited)</span>' : ''} <span class="msg-value">${msg.message}</span></p>
+        <p class="classy">${convertTime}</p>
       </div>
       <div class="msg-button-container">
-        ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-warning edit-message" 1data-edit-message=${msg.id}>Edit</button>` : ''}
+        ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-warning edit-message" data-edit-message=${msg.id}>Edit</button>` : ''}
         ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-danger delete-message" data-delete-message=${msg.id}>X</button>` : ''}
       </div>
     </div>`;
