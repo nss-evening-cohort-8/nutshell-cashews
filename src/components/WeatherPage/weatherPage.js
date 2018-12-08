@@ -5,6 +5,8 @@ import weatherData from '../../data/weatherData';
 import authHelpers from '../../Helpers/authHelpers';
 import './Style/weatherPage.scss';
 import forecastData from './Forecast/forecast';
+// eslint-disable-next-line import/no-cycle
+// import addEditLocations from './AddEditLocations/addEditLocations';
 
 const printSingleLocation = (location) => {
   // eslint-disable-next-line no-unused-expressions
@@ -70,41 +72,6 @@ const getSingleLocation = (e) => {
     });
 };
 
-// const getSingleLocation = (e) => {
-//   // firebase id
-//   const locationId = e.target.dataset.dropdownId;
-//   console.log(e);
-//   weatherData.getSingleWeatherData(singleLocation.zipcode)
-//     .then((result) => {
-//   // returns weather.json obeject;
-//   weatherData.getSingleLocation(locationId)
-//     .then((singleLocation) => {
-//       // makes 'isCurrent' property/key for all locations in firebase false;
-//       weatherData.makeLocationsFalse()
-//         .then(() => {
-//           // makes the 'isCurrent' property/key value I clicked true;
-//           weatherData.updatedIsCurrent(locationId, true)
-//             .then(() => {
-//               // gets weatherDataArray from weatherbit api;
-//               weatherData.getSingleWeatherData(singleLocation.zipcode)
-//                 .then((result) => {
-//                   // loops through the array and prints the weatherObjects in it (only one);
-//                   result.forEach((weatherObject) => {
-//                     printSingleLocation(weatherObject);
-//                   });
-//                   // gets forecast Data thru weatherbit api and prints the forecast cards;
-//                   forecastData.getForecastLocation(singleLocation.zipcode);
-//                   console.log(result);
-//                   printSingleLocation(singleLocation);
-//                 });
-//             });
-//         });
-//     })
-//     .catch((error) => {
-//       console.error('error in getting one friend', error);
-//     });
-// };
-
 const buildDropdown = (locationsArray) => {
   let noLocationMessage = '';
   let dropdown = `<div class="dropdown">
@@ -130,11 +97,39 @@ const buildDropdown = (locationsArray) => {
   } else {
     // eslint-disable-next-line max-len
     noLocationMessage += '<div>You dont have a location selected. Please add a new location.</div>';
-    // addEditLocations.printFormToDom();
+    printFormToDom();
   }
   dropdown += '</div></div>';
   $('#dropdown-container').html(dropdown);
   $('#single-container').html(noLocationMessage);
+};
+
+const formBuilder = (location) => {
+  const form = `
+  <div class="text-center">
+    <h2><label for="form-zip-code">Zip Code</label></h2>
+    <input type="text" class="form-control text-center" value="${location.zipcode}" id="form-zip-code" placeholder="Type zip code here...">
+  </div>
+  `;
+  return form;
+};
+
+const printFormToDom = () => {
+  const emptyLocation = {
+    zipcode: '',
+  };
+
+  let domString = '';
+  domString += formBuilder(emptyLocation);
+  domString += '<div class="d-flex justify-content-center">';
+  domString += '<button class="btn btn-primary d-flex mt-2" id="add-location">Save Location</button>';
+  domString += '</div>';
+  $('#add-edit-location').html(domString).toggle();
+  // if ($('#add-edit-location').style.display === '') {
+  //   $('#show-location-form').textContent = '+';
+  // } else {
+  //   $('#show-location-form').textContent = '-';
+  // }
 };
 
 const weatherPage = () => {
@@ -170,29 +165,53 @@ const deleteLocation = (e) => {
     });
 };
 
-// const updateIsCurrent = (e) => {
-//   const locationId = e.target.dataset;
-//   console.log(locationId);
-//   // const isCurrent = e.target.checked;
-//   weatherData.updatedIsCurrent(locationId)
-//     .then(() => {
-
-//     })
-//     .catch((err) => {
-//       console.error('error in updating flag', err);
+// const gettingZipFromForm = () => {
+//   weatherData.getSingleWeatherData($('#form-zip-code').val())
+//     .then((result) => {
+//       console.log(result);
+//       const name = result[0].city_name;
+//       console.log(name);
+//       const location = {
+//         '':
+//     {
+//       isCurrent: false,
+//       userUid: authHelpers.getCurrentUid(),
+//       zipcode: $('#form-zip-code').val(),
+//     },
+//       };
+//       Object.city_name = name;
+//       return location;
 //     });
 // };
-
 
 const bindEvents = () => {
   $('body').on('click', '.get-single', getSingleLocation);
   $('body').on('click', '.delete-btn', deleteLocation);
-  // $('body').on('click', '.get-single', updateIsCurrent);
+  $('body').on('click', '#show-location-form', printFormToDom);
+  $('body').on('click', '#add-location', addNewLocation);
 };
 
 const initWeatherPage = () => {
   weatherPage();
   bindEvents();
 };
+
+const addNewLocation = () => {
+  const newLocation = {
+    isCurrent: false,
+    userUid: authHelpers.getCurrentUid(),
+    zipcode: $('#form-zip-code').val(),
+  };
+  weatherData.addNewLocation(newLocation)
+    .then(() => {
+      $('#add-edit-location').html('').show();
+      // $('#weather').hide();
+      initWeatherPage();
+    })
+    .catch((error) => {
+      console.error('error', error);
+    });
+};
+
 
 export default { initWeatherPage };
