@@ -7,7 +7,7 @@ import initializeArticlePage from '../ArticlesPage/articlesPage';
 import showAddFormArticle from '../ArticlesPage/addEditArticles';
 
 const navbarEvents = () => {
-  $('#nav-links').on('click', (e) => {
+  $('#nav-container').on('click', (e) => {
     console.log(e.target.id);
     if (e.target.id === 'navbar-button-logout') {
       firebase.auth().signOut().then(() => {
@@ -53,14 +53,21 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').hide();
       $('#weather').show();
-    } else {
-      // click authentication
+    } else if (e.target.className === 'logo') {
       $('#auth').hide();
       $('#component-here').show();
       $('#messages').hide();
       $('#articles').hide();
       $('#events').hide();
       $('#weather').hide();
+    } else {
+      // click authentication
+      // $('#auth').hide();
+      // $('#component-here').show();
+      // $('#messages').hide();
+      // $('#articles').hide();
+      // $('#events').hide();
+      // $('#weather').hide();
     }
   });
 };
@@ -83,6 +90,7 @@ const navBuilder = () => {
   `;
   $('#navbar-here').html(domString);
   navbarEvents();
+  // $('body').on('click', (e) => { console.log(e.target.className); });
 };
 
 export default { navBuilder };

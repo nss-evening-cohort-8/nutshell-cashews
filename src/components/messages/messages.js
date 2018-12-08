@@ -31,9 +31,7 @@ const editMsgEvent = (key, isEdited) => {
   const editBool = isEdited;
   $('#submit-message').on('click', () => {
     const updatedMsg = $('#msg-input').val();
-    console.log('keyProp:', keyProp);
-    console.log('editBool:', editBool);
-    console.log('updatedMsg:', updatedMsg);
+    $('#msg-input').val('').blur();
     msgFactory.msgEditer(keyProp, editBool)
       .then(() => {
         msgFactory.msgEditedMessage(keyProp, updatedMsg)
@@ -55,6 +53,7 @@ const msgEditButton = () => {
     const parentDiv = e.currentTarget.closest('.message-detail');
     const currentMsg = $(parentDiv).find('.msg-value').text();
     $('#msg-input').val(currentMsg);
+    $('#msg-input').focus();
     $('#submit-message').off();
     editMsgEvent(messageKey, updatedInfo);
   });
@@ -74,19 +73,26 @@ const printMessages = (returnedData) => {
   });
   let domString = '<div>';
   msgArr.forEach((msg) => {
-    const convertTime = new Date(msg.timestamp);
-    domString += `<div class="message-detail">
-  <p>${msg.displayName ? `<strong>${msg.displayName}:</strong>` : ''} ${msg.isEdited ? '(edited)' : ''} <span class="msg-value">${msg.message}</span></p>
-      <p>${convertTime}</p>
-      ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-danger delete-message" data-delete-message=${msg.id}>X</button>` : ''}
-      ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-warning edit-message" data-edit-message=${msg.id}>Edit</button>` : ''}
+    let convertTime = new Date(msg.timestamp).toLocaleString();
+    convertTime = convertTime.replace(/:\d{2}(?!:)/, '');
+    domString += `
+    <div class="message-detail">
+      <div>
+        <p>${msg.displayName ? `<strong class="${msg.userUid === authHelpers.getCurrentUid() ? 'is-user' : 'other-user'}">${msg.displayName}:</strong>` : ''} ${msg.isEdited ? '<span class="classy">(edited)</span>' : ''} <span class="msg-value">${msg.message}</span></p>
+        <p class="classy">${convertTime}</p>
+      </div>
+      <div class="msg-button-container">
+        ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-warning edit-message" data-edit-message=${msg.id}>Edit</button>` : ''}
+        ${msg.userUid === authHelpers.getCurrentUid() ? `<button class="btn btn-danger delete-message" data-delete-message=${msg.id}>X</button>` : ''}
+      </div>
     </div>`;
   });
-  // const times
   domString += '</div>';
   $('#chatbox').append(domString);
   deleteMsgEvent();
   msgEditButton();
+  const scrollLength = $('#chat-container').prop('scrollHeight');
+  $('#chat-container').scrollTop(scrollLength);
 };
 
 const getMessages = () => {
@@ -125,14 +131,23 @@ const newMsgEvent = () => {
   });
 };
 
+const enterSubmit = () => {
+  $('#msg-input').on('keyup', (e) => {
+    if (e.keyCode === 13) {
+      $('#submit-message').trigger('click');
+    }
+  });
+};
+
 const msgInput = () => {
   const domString = `<input id="msg-input" type="text" placeholder="message..."/>
-    <button id="submit-message">Submit</button>`;
+    <button id="submit-message" class="btn btn-primary">Submit</button>`;
   $('#msg-input-container').append(domString);
+  enterSubmit();
 };
 
 const buildMsgBase = () => {
-  const domString = `<div id="chatbox"></div>
+  const domString = `<div id="chat-container"><div id="chatbox"></div></div>
     <div id="msg-input-container">
     </div>
   </div>`;
