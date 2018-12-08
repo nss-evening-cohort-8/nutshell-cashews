@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import eventsData from './eventsData';
 import intializeEventsPage from './events';
+import authHelpers from '../../Helpers/authHelpers';
 
 const formBuilder = (theEvent) => {
   const form = `
@@ -25,6 +26,7 @@ const gettingEventFromForm = () => {
     event: $('#form-event').val(),
     location: $('#form-location').val(),
     startDate: parseInt($('#form-startDate').val(), 10),
+    userUid: authHelpers.getCurrentUid(),
   };
   return event;
 };

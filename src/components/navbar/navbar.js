@@ -5,6 +5,8 @@ import './navbar.scss';
 import messages from '../messages/messages';
 import initializeArticlePage from '../ArticlesPage/articlesPage';
 import showAddFormArticle from '../ArticlesPage/addEditArticles';
+import intializeEvents from '../Events/intializeEventsPage';
+
 
 const navbarEvents = () => {
   $('#nav-links').on('click', (e) => {
@@ -46,6 +48,7 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').show();
       $('#weather').hide();
+      intializeEvents();
     } else if (e.target.id === 'navbar-button-weather') {
       $('#auth').hide();
       $('#component-here').hide();

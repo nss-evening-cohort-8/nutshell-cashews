@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import 'bootstrap';
+import authHelpers from '../../Helpers/authHelpers';
 import eventsData from './eventsData';
 
 const eventsPrinter = (eventsArray) => {
@@ -23,7 +24,8 @@ const eventsPrinter = (eventsArray) => {
 };
 
 const eventsPage = () => {
-  eventsData.getAllEvents()
+  const uid = authHelpers.getCurrentUid();
+  eventsData.getAllEvents(uid)
     .then((eventsArray) => {
       eventsPrinter(eventsArray);
     })

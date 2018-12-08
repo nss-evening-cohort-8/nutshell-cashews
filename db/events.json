@@ -1,14 +1,38 @@
 {
   "event1": {
-    "userUid": "12345",
-    "event": "Bonfire at the beach",
+    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "event": "Gaylord Opryland’s A Country Christmas",
     "startDate": 1528763298535,
-    "location": "Ocean Beach"
+    "location": "2800 Opryland Dr, Nashville, TN 37214"
   },
   "event2": {
-    "userUid": "12345",
-    "event": "Nap",
+    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "event": "Holiday LIGHTS at Cheekwood",
     "startDate": 1528763298536,
-    "location": "NSS"
+    "location": "1200 Forrest Park Dr, Nashville, TN 37205"
+  },
+  "event3": {
+    "userUid": "12345",
+    "event": "Movie Series at TailGate Brewery",
+    "startDate": 1528763298536,
+    "location": "7300 Charlotte Pike, Nashville, TN 37209"
+  },
+  "event4": {
+    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "event": "A Christmas Story at TPAC",
+    "startDate": 1528763298536,
+    "location": "Tennessee Performing Arts Center"
+  },
+  "event5": {
+    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "event": "Titans vs. Washington Redskins",
+    "startDate": 1528763298536,
+    "location": "Nissan Stadium"
+  },
+  "event6": {
+    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "event": "Franklin American Mortgage Music City Bowl",
+    "startDate": 1528763298536,
+    "location": "Nissan Stadium"
   }
 }
