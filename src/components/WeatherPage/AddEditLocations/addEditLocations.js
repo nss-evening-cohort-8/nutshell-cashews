@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import weatherData from '../../../data/weatherData';
-import initializeWeatherPage from '../weatherPage';
+import initWeatherPage from '../weatherPage';
 import authHelpers from '../../../Helpers/authHelpers';
 // import weatherApiData from '../../../../db/weatherApiKey.json';
 
@@ -65,7 +65,7 @@ const addNewLocation = () => {
     .then(() => {
       $('#add-edit-location').html('').show();
       // $('#weather').hide();
-      initializeWeatherPage.initializeWeatherPage();
+      initWeatherPage.initWeatherPage();
     })
     .catch((error) => {
       console.error('error', error);

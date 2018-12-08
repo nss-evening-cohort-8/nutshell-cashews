@@ -190,9 +190,9 @@ const bindEvents = () => {
   // $('body').on('click', '.get-single', updateIsCurrent);
 };
 
-const initializeWeatherPage = () => {
+const initWeatherPage = () => {
   weatherPage();
   bindEvents();
 };
 
-export default { initializeWeatherPage };
+export default { initWeatherPage };
