@@ -2,11 +2,14 @@ import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import './navbar.scss';
-import weatherPage from '../WeatherPage/weatherPage';
+// import weatherPage from '../WeatherPage/weatherPage';
 import messages from '../messages/messages';
+import initializeArticlePage from '../ArticlesPage/articlesPage';
+import showAddFormArticle from '../ArticlesPage/addEditArticles';
 
 const navbarEvents = () => {
-  $('#nav-links').on('click', (e) => {
+  $('#nav-container').on('click', (e) => {
+    console.log(e.target.id);
     if (e.target.id === 'navbar-button-logout') {
       firebase.auth().signOut().then(() => {
         $('#auth').show();
@@ -33,6 +36,10 @@ const navbarEvents = () => {
       $('#articles').show();
       $('#events').hide();
       $('#weather').hide();
+      initializeArticlePage.styleFunction();
+      initializeArticlePage.initializeArticlePage();
+      $('#show-article-form').on('click', showAddFormArticle.buildAddForm);
+      showAddFormArticle.buildAddForm();
     } else if (e.target.id === 'navbar-button-events') {
       $('#auth').hide();
       $('#component-here').hide();
@@ -47,15 +54,21 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').hide();
       $('#weather').show();
-      weatherPage.initializeWeatherPage();
-    } else {
-      // click authentication
+    } else if (e.target.className === 'logo') {
       $('#auth').hide();
       $('#component-here').show();
       $('#messages').hide();
       $('#articles').hide();
       $('#events').hide();
       $('#weather').hide();
+    } else {
+      // click authentication
+      // $('#auth').hide();
+      // $('#component-here').show();
+      // $('#messages').hide();
+      // $('#articles').hide();
+      // $('#events').hide();
+      // $('#weather').hide();
     }
   });
 };
@@ -78,6 +91,7 @@ const navBuilder = () => {
   `;
   $('#navbar-here').html(domString);
   navbarEvents();
+  // $('body').on('click', (e) => { console.log(e.target.className); });
 };
 
 export default { navBuilder };

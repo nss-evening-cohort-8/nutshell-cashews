@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import $ from 'jquery';
+// import initializeArticlePage from '../components/ArticlesPage/articlesPage';
 
 const checkLoginStatus = (initializeMainPage) => {
   firebase.auth().onAuthStateChanged((user) => {

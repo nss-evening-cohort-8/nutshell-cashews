@@ -8,8 +8,6 @@ import authHelpers from './Helpers/authHelpers';
 import loginButton from './components/Auth/auth';
 
 import printArticles from './components/ArticlesPage/articlesPage';
-import showAddForm from './components/WeatherPage/AddEditLocations/addEditLocations';
-import printDash from './components/Dashboard/dashboard';
 import intializeEvents from './components/Events/intializeEventsPage';
 
 const initialize = () => {
@@ -17,8 +15,7 @@ const initialize = () => {
   navbar.navBuilder();
   authHelpers.checkLoginStatus(printArticles.printArticles);
   loginButton.loginButton();
-  $('#show-location-form').on('click', showAddForm);
-  authHelpers.checkLoginStatus(printDash.printDash);
+  $('#articleAddButton').hide();
   intializeEvents();
 };
 
