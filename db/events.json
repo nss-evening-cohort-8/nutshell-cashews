@@ -1,6 +1,6 @@
 {
   "event1": {
-    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "userUid": "0dHr6i1TH3T0RzaV58fyfUAUrZp2",
     "event": "Gaylord Opryland’s A Country Christmas",
     "startDate": 1528763298535,
     "location": "2800 Opryland Dr, Nashville, TN 37214"
@@ -12,13 +12,13 @@
     "location": "1200 Forrest Park Dr, Nashville, TN 37205"
   },
   "event3": {
-    "userUid": "12345",
+    "userUid": "aFVB3S56qTUMMEWSZpgKQ6i3x0o2",
     "event": "Movie Series at TailGate Brewery",
     "startDate": 1528763298536,
     "location": "7300 Charlotte Pike, Nashville, TN 37209"
   },
   "event4": {
-    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "userUid": "0dHr6i1TH3T0RzaV58fyfUAUrZp2",
     "event": "A Christmas Story at TPAC",
     "startDate": 1528763298536,
     "location": "Tennessee Performing Arts Center"
@@ -30,13 +30,13 @@
     "location": "Nissan Stadium"
   },
   "event6": {
-    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "userUid": "Cg8UGw669QXcvcfghCjXVkTxBf32",
     "event": "Franklin American Mortgage Music City Bowl",
     "startDate": 1528763298536,
     "location": "Nissan Stadium"
   },
   "event7": {
-    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "userUid": "Cg8UGw669QXcvcfghCjXVkTxBf32",
     "event": "Franklin American Mortgage Music City Bowl",
     "startDate": 1528763298536,
     "location": "Nissan Stadium"
@@ -48,9 +48,27 @@
     "location": "Nissan Stadium"
   },
   "event9": {
-    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "userUid": "aFVB3S56qTUMMEWSZpgKQ6i3x0o2",
     "event": "Franklin American Mortgage Music City Bowl",
     "startDate": 1528763298536,
     "location": "Nissan Stadium"
   },
+  "event10": {
+    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "event": "Holiday LIGHTS at Cheekwood",
+    "startDate": 1528763298536,
+    "location": "1200 Forrest Park Dr, Nashville, TN 37205"
+  },
+  "event11": {
+    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "event": "Holiday LIGHTS at Cheekwood",
+    "startDate": 1528763298536,
+    "location": "1200 Forrest Park Dr, Nashville, TN 37205"
+  },
+  "event12": {
+    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "event": "Holiday LIGHTS at Cheekwood",
+    "startDate": 1528763298536,
+    "location": "1200 Forrest Park Dr, Nashville, TN 37205"
+  }
 }
