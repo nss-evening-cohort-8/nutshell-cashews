@@ -35,6 +35,7 @@ const printForecast = (allWeatherDataObject) => {
     </li>
     `;
     $('#forecast-container').html(forecastCardString);
+    // return forecastCardString;
   });
 };
 
