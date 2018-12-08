@@ -55,12 +55,12 @@ const navbarEvents = () => {
       $('#weather').show();
     } else {
       // click authentication
-      $('#auth').hide();
-      $('#component-here').show();
-      $('#messages').hide();
-      $('#articles').hide();
-      $('#events').hide();
-      $('#weather').hide();
+      // $('#auth').hide();
+      // $('#component-here').show();
+      // $('#messages').hide();
+      // $('#articles').hide();
+      // $('#events').hide();
+      // $('#weather').hide();
     }
   });
 };
