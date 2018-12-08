@@ -48,6 +48,7 @@ const addNewArticle = () => {
       // $('#add-edit-article').html('').hide();
       // $('#article').show();
       initializeArticlesPage.initializeArticlePage();
+      buildAddForm();
     })
     .catch((error) => {
       console.error('error', error);
@@ -79,6 +80,7 @@ const updateArticle = (e) => {
       // $('#single-article').html('');
       // $('#articles').show();
       initializeArticlesPage.initializeArticlePage();
+      buildAddForm();
     })
     .catch((error) => {
       console.error('error', error);

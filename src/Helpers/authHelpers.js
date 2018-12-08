@@ -18,6 +18,7 @@ const checkLoginStatus = (initializeMainPage) => {
       $('#navbar-button-events').show();
       $('#navbar-button-weather').show();
       $('#navbar-button-logout').show();
+      $('#navbar-button-main').show();
       initializeMainPage();
     } else {
       $('#auth').show();
@@ -31,6 +32,7 @@ const checkLoginStatus = (initializeMainPage) => {
       $('#navbar-button-events').hide();
       $('#navbar-button-weather').hide();
       $('#navbar-button-logout').hide();
+      $('#navbar-button-main').hide();
     }
   });
 };

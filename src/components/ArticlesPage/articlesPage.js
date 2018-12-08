@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import articleData from '../../Helpers/data/articlesData';
+import authHelpers from '../../Helpers/authHelpers';
+
 
 const printArticles = (articles) => {
   let articleString = '';
@@ -49,8 +51,8 @@ const getSingleArticle = (e) => {
 // };
 
 const articlePage = () => {
-  // const uid = authHelpers.getCurrentUid();
-  articleData.getAllArticles()
+  const uid = authHelpers.getCurrentUid();
+  articleData.getAllArticles(uid)
     .then((articleArray) => {
       printArticles(articleArray);
     })
@@ -72,9 +74,7 @@ const deleteArticle = (e) => {
 };
 
 const styleFunction = () => {
-  const domString = `  <div id="articleAddButton">
-  <button id="show-article-form" class="btn btn-success">Add Article</button>
-  </div>
+  const domString = `
   <div id="add-edit-article"></div>
   <div id="single-article"></div>`;
   $('#articles').html(domString);

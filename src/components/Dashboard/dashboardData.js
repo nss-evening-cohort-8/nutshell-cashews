@@ -4,7 +4,6 @@ import articlesData from '../../Helpers/data/articlesData';
 import eventsData from '../Events/eventsData';
 import authHelpers from '../../Helpers/authHelpers';
 
-
 const arraySorter = (data) => {
   let newArr = [];
   $.each(data, (key, value) => {
@@ -32,7 +31,8 @@ const firstMessage = () => new Promise((resolve, reject) => {
 });
 
 const singleArticle = () => new Promise((resolve, reject) => {
-  articlesData.getAllArticles()
+  const uid = authHelpers.getCurrentUid();
+  articlesData.getAllArticles(uid)
     .then((articledata) => {
       resolve(articledata);
     })
