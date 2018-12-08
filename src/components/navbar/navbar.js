@@ -8,7 +8,6 @@ import showAddFormArticle from '../ArticlesPage/addEditArticles';
 
 const navbarEvents = () => {
   $('#nav-links').on('click', (e) => {
-    console.log(e.target.id);
     if (e.target.id === 'navbar-button-logout') {
       firebase.auth().signOut().then(() => {
         $('#auth').show();
@@ -20,6 +19,13 @@ const navbarEvents = () => {
       }).catch((err) => {
         console.error('Youre still logged in', err);
       });
+    } else if (e.target.id === 'navbar-button-main') {
+      $('#auth').hide();
+      $('#component-here').show();
+      $('#messages').hide();
+      $('#articles').hide();
+      $('#events').hide();
+      $('#weather').hide();
     } else if (e.target.id === 'navbar-button-messages') {
       $('#auth').hide();
       $('#component-here').hide();
@@ -73,6 +79,7 @@ const navBuilder = () => {
         <img class="logo" src="${logoImg}"/>
       </div>
       <div id="nav-links">
+        <button class="btn btn-secondary" id="navbar-button-main">Home</button>
         <button class="btn btn-secondary" id="navbar-button-messages">Messages</button>
         <button class="btn btn-secondary" id="navbar-button-articles">Articles</button>
         <button class="btn btn-secondary" id="navbar-button-events">Events</button>
