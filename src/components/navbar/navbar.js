@@ -17,6 +17,15 @@ const navbarEvents = () => {
         $('#articles').hide();
         $('#events').hide();
         $('#weather').hide();
+        if (document.getElementById('navbar-button-messages').classList.contains('active')) {
+          document.getElementById('navbar-button-messages').classList = 'btn btn-secondary';
+        } else if (document.getElementById('navbar-button-events').classList.contains('active')) {
+          document.getElementById('navbar-button-events').classList = 'btn btn-secondary';
+        } else if (document.getElementById('navbar-button-articles').classList.contains('active')) {
+          document.getElementById('navbar-button-articles').classList = 'btn btn-secondary';
+        } else if (document.getElementById('navbar-button-weather').classList.contains('active')) {
+          document.getElementById('navbar-button-weather').classList = 'btn btn-secondary';
+        }
       }).catch((err) => {
         console.error('Youre still logged in', err);
       });
@@ -28,6 +37,14 @@ const navbarEvents = () => {
       $('#events').hide();
       $('#weather').hide();
       messages.initMsgPage();
+      e.target.className = 'btn btn-secondary active';
+      if (document.getElementById('navbar-button-articles').classList.contains('active')) {
+        document.getElementById('navbar-button-articles').classList = 'btn btn-secondary';
+      } else if (document.getElementById('navbar-button-events').classList.contains('active')) {
+        document.getElementById('navbar-button-events').classList = 'btn btn-secondary';
+      } else if (document.getElementById('navbar-button-weather').classList.contains('active')) {
+        document.getElementById('navbar-button-weather').classList = 'btn btn-secondary';
+      }
     } else if (e.target.id === 'navbar-button-articles') {
       $('#auth').hide();
       $('#component-here').hide();
@@ -39,6 +56,14 @@ const navbarEvents = () => {
       initializeArticlePage.initializeArticlePage();
       $('#show-article-form').on('click', showAddFormArticle.buildAddForm);
       showAddFormArticle.buildAddForm();
+      if (document.getElementById('navbar-button-messages').classList.contains('active')) {
+        document.getElementById('navbar-button-messages').classList = 'btn btn-secondary';
+      } else if (document.getElementById('navbar-button-events').classList.contains('active')) {
+        document.getElementById('navbar-button-events').classList = 'btn btn-secondary';
+      } else if (document.getElementById('navbar-button-weather').classList.contains('active')) {
+        document.getElementById('navbar-button-weather').classList = 'btn btn-secondary';
+      }
+      e.target.className = 'btn btn-secondary active';
     } else if (e.target.id === 'navbar-button-events') {
       $('#auth').hide();
       $('#component-here').hide();
@@ -46,6 +71,14 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').show();
       $('#weather').hide();
+      if (document.getElementById('navbar-button-messages').classList.contains('active')) {
+        document.getElementById('navbar-button-messages').classList = 'btn btn-secondary';
+      } else if (document.getElementById('navbar-button-articles').classList.contains('active')) {
+        document.getElementById('navbar-button-articles').classList = 'btn btn-secondary';
+      } else if (document.getElementById('navbar-button-weather').classList.contains('active')) {
+        document.getElementById('navbar-button-weather').classList = 'btn btn-secondary';
+      }
+      e.target.className = 'btn btn-secondary active';
     } else if (e.target.id === 'navbar-button-weather') {
       $('#auth').hide();
       $('#component-here').hide();
@@ -53,6 +86,14 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').hide();
       $('#weather').show();
+      if (document.getElementById('navbar-button-messages').classList.contains('active')) {
+        document.getElementById('navbar-button-messages').classList = 'btn btn-secondary';
+      } else if (document.getElementById('navbar-button-events').classList.contains('active')) {
+        document.getElementById('navbar-button-events').classList = 'btn btn-secondary';
+      } else if (document.getElementById('navbar-button-articles').classList.contains('active')) {
+        document.getElementById('navbar-button-articles').classList = 'btn btn-secondary';
+      }
+      e.target.className = 'btn btn-secondary active';
     } else if (e.target.className === 'logo') {
       $('#auth').hide();
       $('#component-here').show();
@@ -60,6 +101,15 @@ const navbarEvents = () => {
       $('#articles').hide();
       $('#events').hide();
       $('#weather').hide();
+      if (document.getElementById('navbar-button-messages').classList.contains('active')) {
+        document.getElementById('navbar-button-messages').classList = 'btn btn-secondary';
+      } else if (document.getElementById('navbar-button-events').classList.contains('active')) {
+        document.getElementById('navbar-button-events').classList = 'btn btn-secondary';
+      } else if (document.getElementById('navbar-button-articles').classList.contains('active')) {
+        document.getElementById('navbar-button-articles').classList = 'btn btn-secondary';
+      } else if (document.getElementById('navbar-button-weather').classList.contains('active')) {
+        document.getElementById('navbar-button-weather').classList = 'btn btn-secondary';
+      }
     } else {
       // click authentication
       // $('#auth').hide();

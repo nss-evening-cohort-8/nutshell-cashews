@@ -19,6 +19,7 @@ body {
   justify-content: center;
   flex-direction: column;
   width: 33%;
+  height: 20%;
   margin-right: 50px;
 }
 
@@ -33,4 +34,10 @@ body {
 #articleAddButton{
   margin-top: 30px;
   margin-left: 20px;
+}
+
+#nav-links .active {
+  background-color: blue;
+  // padding: 8px;
+  // margin-right: 40px;
 }
