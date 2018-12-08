@@ -5,7 +5,7 @@ import eventsData from './eventsData';
 import './events.scss';
 
 const eventsPrinter = (eventsArray) => {
-  let eventsCards = '<h1 id="events-Header">Events</h1>';
+  let eventsCards = '<h1 id="events-Header">EVENTS</h1>';
   eventsCards += '<div class="text-center"><button type="button" id="add-event-button" class="btn btn-success mr-5">Add New Event</button></div>';
   eventsCards += '<div class="container mt-4 d-flex flex-wrap">';
   eventsArray.forEach((event) => {
