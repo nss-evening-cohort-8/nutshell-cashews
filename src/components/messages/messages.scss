@@ -1,3 +1,48 @@
-#chatbox {
+#chat-container {
+  margin: 25px auto;
+  width: 75%;
+  min-width: 500px;
   border: 1px solid #000;
+  border-radius: 3px;
+  max-height: 500px;
+  overflow-y: scroll;
+  background-color: #b9c1d8;
+}
+
+#msg-input-container {
+  width: 75%;
+  margin: 25px auto;
+
+};
+
+#chatbox {
+  margin: 10px;
+}
+
+.classy {
+  font-style: italic;
+  color: #656565
+}
+
+.message-detail {
+  border-top: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-detail:first-of-type {
+  border-top: none;
+}
+
+.is-user {
+  color: rgb(167, 2, 2);
+}
+
+.other-user {
+  color: rgb(0, 0, 155);
+}
+
+#msg-input {
+  height: 34px;
 }
