@@ -131,10 +131,19 @@ const newMsgEvent = () => {
   });
 };
 
+const enterSubmit = () => {
+  $('#msg-input').on('keyup', (e) => {
+    if (e.keyCode === 13) {
+      $('#submit-message').trigger('click');
+    }
+  });
+};
+
 const msgInput = () => {
   const domString = `<input id="msg-input" type="text" placeholder="message..."/>
     <button id="submit-message" class="btn btn-primary">Submit</button>`;
   $('#msg-input-container').append(domString);
+  enterSubmit();
 };
 
 const buildMsgBase = () => {
