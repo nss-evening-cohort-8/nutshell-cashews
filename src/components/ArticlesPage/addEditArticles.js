@@ -45,6 +45,7 @@ const addNewArticle = () => {
   articlesData.addNewArticle(newArticle)
     .then(() => {
       initializeArticlesPage.initializeArticlePage();
+      buildAddForm();
     })
     .catch((error) => {
       console.error('error', error);
@@ -72,6 +73,7 @@ const updateArticle = (e) => {
   articlesData.updateArticle(updatedArticle, articleId)
     .then(() => {
       initializeArticlesPage.initializeArticlePage();
+      buildAddForm();
     })
     .catch((error) => {
       console.error('error', error);

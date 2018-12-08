@@ -7,7 +7,6 @@ import navbar from './components/navbar/navbar';
 import authHelpers from './Helpers/authHelpers';
 import loginButton from './components/Auth/auth';
 import printDash from './components/Dashboard/dashboard';
-import intializeEvents from './components/Events/intializeEventsPage';
 
 const initialize = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
@@ -15,7 +14,6 @@ const initialize = () => {
   authHelpers.checkLoginStatus(printDash.printDash);
   loginButton.loginButton();
   $('#articleAddButton').hide();
-  intializeEvents();
 };
 
 initialize();
