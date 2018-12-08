@@ -73,6 +73,9 @@ const getSingleLocation = (e) => {
   // firebase id
   const locationId = e.target.dataset.dropdownId;
   console.log(e);
+  $('')
+  // weatherData.getSingleWeatherData(singleLocation.zipcode)
+  //   .then((result) => {
   // returns weather.json obeject;
   weatherData.getSingleLocation(locationId)
     .then((singleLocation) => {
@@ -91,8 +94,8 @@ const getSingleLocation = (e) => {
                   });
                   // gets forecast Data thru weatherbit api and prints the forecast cards;
                   forecastData.getForecastLocation(singleLocation.zipcode);
-                  // console.log(result);
-                  // printSingleLocation(singleLocation);
+                  console.log(result);
+                  printSingleLocation(singleLocation);
                 });
             });
         });
@@ -122,7 +125,7 @@ const buildDropdown = (locationsArray) => {
       //   console.log(zipCodeData);
       // });
       // console.log(location);
-      dropdown += `<div class="dropdown-item get-single text-center" cursor="pointer" data-dropdown-id="${location.zipode}">${location.zipcode}</div>`;
+      dropdown += `<div class="dropdown-item get-single text-center" cursor="pointer" data-dropdown-id="${location.id}">${location.zipcode}</div>`;
     });
   } else {
     // eslint-disable-next-line max-len
