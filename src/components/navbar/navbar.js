@@ -7,74 +7,67 @@ import initializeArticlePage from '../ArticlesPage/articlesPage';
 import showAddFormArticle from '../ArticlesPage/addEditArticles';
 
 const navbarEvents = () => {
-  $('#nav-links').on('click', (e) => {
-    if (e.target.id === 'navbar-button-logout') {
-      firebase.auth().signOut().then(() => {
-        $('#auth').show();
-        $('#component-here').hide();
-        $('#messages').hide();
-        $('#articles').hide();
-        $('#events').hide();
-        $('#weather').hide();
-      }).catch((err) => {
-        console.error('Youre still logged in', err);
-      });
-    } else if (e.target.id === 'navbar-button-main') {
-      $('#auth').hide();
-      $('#component-here').show();
-      $('#messages').hide();
-      $('#articles').hide();
-      $('#events').hide();
-      $('#weather').hide();
-    } else if (e.target.id === 'navbar-button-messages') {
-      $('#auth').hide();
-      $('#component-here').hide();
-      $('#messages').show();
-      $('#articles').hide();
-      $('#events').hide();
-      $('#weather').hide();
-      messages.initMsgPage();
-    } else if (e.target.id === 'navbar-button-articles') {
-      $('#auth').hide();
-      $('#component-here').hide();
-      $('#messages').hide();
-      $('#articles').show();
-      $('#events').hide();
-      $('#weather').hide();
-      initializeArticlePage.styleFunction();
-      initializeArticlePage.initializeArticlePage();
-      $('#show-article-form').on('click', showAddFormArticle.buildAddForm);
-      showAddFormArticle.buildAddForm();
-    } else if (e.target.id === 'navbar-button-events') {
-      $('#auth').hide();
-      $('#component-here').hide();
-      $('#messages').hide();
-      $('#articles').hide();
-      $('#events').show();
-      $('#weather').hide();
-    } else if (e.target.id === 'navbar-button-weather') {
-      $('#auth').hide();
+  $('#navbar-button-logout').on('click', () => {
+    firebase.auth().signOut().then(() => {
+      $('#auth').show();
       $('#component-here').hide();
       $('#messages').hide();
       $('#articles').hide();
       $('#events').hide();
-      $('#weather').show();
-    } else if (e.target.className === 'logo') {
-      $('#auth').hide();
-      $('#component-here').show();
-      $('#messages').hide();
-      $('#articles').hide();
-      $('#events').hide();
       $('#weather').hide();
-    } else {
-      // click authentication
-      // $('#auth').hide();
-      // $('#component-here').show();
-      // $('#messages').hide();
-      // $('#articles').hide();
-      // $('#events').hide();
-      // $('#weather').hide();
-    }
+    }).catch((err) => {
+      console.error('Youre still logged in', err);
+    });
+  });
+
+  $('.home').on('click', () => {
+    $('#auth').hide();
+    $('#component-here').show();
+    $('#messages').hide();
+    $('#articles').hide();
+    $('#events').hide();
+    $('#weather').hide();
+  });
+
+  $('#navbar-button-articles').on('click', () => {
+    $('#auth').hide();
+    $('#component-here').hide();
+    $('#messages').hide();
+    $('#articles').show();
+    $('#events').hide();
+    $('#weather').hide();
+    initializeArticlePage.styleFunction();
+    initializeArticlePage.initializeArticlePage();
+    $('#show-article-form').on('click', showAddFormArticle.buildAddForm);
+    showAddFormArticle.buildAddForm();
+  });
+
+  $('#navbar-button-events').on('click', () => {
+    $('#auth').hide();
+    $('#component-here').hide();
+    $('#messages').hide();
+    $('#articles').hide();
+    $('#events').show();
+    $('#weather').hide();
+  });
+
+  $('#navbar-button-weather').on('click', () => {
+    $('#auth').hide();
+    $('#component-here').hide();
+    $('#messages').hide();
+    $('#articles').hide();
+    $('#events').hide();
+    $('#weather').show();
+  });
+
+  $('#navbar-button-messages').on('click', () => {
+    $('#auth').hide();
+    $('#component-here').hide();
+    $('#messages').show();
+    $('#articles').hide();
+    $('#events').hide();
+    $('#weather').hide();
+    messages.initMsgPage();
   });
 };
 
@@ -83,10 +76,10 @@ const navBuilder = () => {
   const domString = `
     <nav id="nav-container">
       <div id="nav-logo">
-        <img class="logo" src="${logoImg}"/>
+        <img class="logo home" src="${logoImg}"/>
       </div>
       <div id="nav-links">
-        <button class="btn btn-secondary" id="navbar-button-main">Home</button>
+        <button class="btn btn-secondary home" id="navbar-button-main">Home</button>
         <button class="btn btn-secondary" id="navbar-button-messages">Messages</button>
         <button class="btn btn-secondary" id="navbar-button-articles">Articles</button>
         <button class="btn btn-secondary" id="navbar-button-events">Events</button>
