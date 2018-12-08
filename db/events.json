@@ -1,74 +1,74 @@
 {
   "event1": {
     "userUid": "0dHr6i1TH3T0RzaV58fyfUAUrZp2",
-    "event": "Gaylord Opryland’s A Country Christmas",
-    "startDate": 1528763298535,
-    "location": "2800 Opryland Dr, Nashville, TN 37214"
+    "event": "Nashville Predators vs. Ottawa Senators",
+    "startDate": "12/11/2018",
+    "location": "Bridgestone Arena"
   },
   "event2": {
     "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
     "event": "Holiday LIGHTS at Cheekwood",
-    "startDate": 1528763298536,
+    "startDate": "12/21/2018",
     "location": "1200 Forrest Park Dr, Nashville, TN 37205"
   },
   "event3": {
     "userUid": "aFVB3S56qTUMMEWSZpgKQ6i3x0o2",
     "event": "Movie Series at TailGate Brewery",
-    "startDate": 1528763298536,
+    "startDate": "12/14/2018",
     "location": "7300 Charlotte Pike, Nashville, TN 37209"
   },
   "event4": {
     "userUid": "0dHr6i1TH3T0RzaV58fyfUAUrZp2",
-    "event": "A Christmas Story at TPAC",
-    "startDate": 1528763298536,
-    "location": "Tennessee Performing Arts Center"
+    "event": "Nashville Predators vs. Vancouver Canucks",
+    "startDate": "12/13/2018",
+    "location": "Bridgestone Arena"
   },
   "event5": {
     "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
     "event": "Titans vs. Washington Redskins",
-    "startDate": 1528763298536,
+    "startDate": "12/22/2018",
     "location": "Nissan Stadium"
   },
   "event6": {
     "userUid": "Cg8UGw669QXcvcfghCjXVkTxBf32",
-    "event": "Franklin American Mortgage Music City Bowl",
-    "startDate": 1528763298536,
-    "location": "Nissan Stadium"
+    "event": "Visit the in-laws",
+    "startDate": "12/30/2018",
+    "location": "Kentucky"
   },
   "event7": {
     "userUid": "Cg8UGw669QXcvcfghCjXVkTxBf32",
-    "event": "Franklin American Mortgage Music City Bowl",
-    "startDate": 1528763298536,
-    "location": "Nissan Stadium"
+    "event": "Visit my grandparents",
+    "startDate": "12/28/2018",
+    "location": "Upstate NY"
   },
   "event8": {
     "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
     "event": "Franklin American Mortgage Music City Bowl",
-    "startDate": 1528763298536,
+    "startDate": "12/28/2018",
     "location": "Nissan Stadium"
   },
   "event9": {
     "userUid": "aFVB3S56qTUMMEWSZpgKQ6i3x0o2",
-    "event": "Franklin American Mortgage Music City Bowl",
-    "startDate": 1528763298536,
-    "location": "Nissan Stadium"
+    "event": "Company Christmas Party",
+    "startDate": "12/14/2018",
+    "location": "Acme Feed & Seed"
   },
   "event10": {
     "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
-    "event": "Holiday LIGHTS at Cheekwood",
-    "startDate": 1528763298536,
-    "location": "1200 Forrest Park Dr, Nashville, TN 37205"
+    "event": "Gaylord Opryland’s A Country Christmas",
+    "startDate": "12/18/2018",
+    "location": "2800 Opryland Dr, Nashville, TN 37214"
   },
   "event11": {
     "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
-    "event": "Holiday LIGHTS at Cheekwood",
-    "startDate": 1528763298536,
-    "location": "1200 Forrest Park Dr, Nashville, TN 37205"
+    "event": "A Christmas Story at TPAC",
+    "startDate": "12/19/2018",
+    "location": "Tennessee Performing Arts Center"
   },
   "event12": {
     "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
-    "event": "Holiday LIGHTS at Cheekwood",
-    "startDate": 1528763298536,
-    "location": "1200 Forrest Park Dr, Nashville, TN 37205"
+    "event": "Visit Home",
+    "startDate": "12/22/2018",
+    "location": "Pell City, AL"
   }
 }

@@ -15,7 +15,7 @@ const formBuilder = (theEvent) => {
   </div>
   <div class="form-group">
     <label for="form-friend-email">Start Date:</label>
-    <input type="text" class="form-control datecheck" value="${theEvent.startDate}" id="form-startDate" placeholder="Start Date">
+    <input type="date" class="form-control datecheck" value="${theEvent.startDate}" id="form-startDate" placeholder="Start Date">
   </div>
     `;
   return form;
@@ -25,7 +25,7 @@ const gettingEventFromForm = () => {
   const event = {
     event: $('#form-event').val(),
     location: $('#form-location').val(),
-    startDate: parseInt($('#form-startDate').val(), 10),
+    startDate: $('#form-startDate').val(),
     userUid: authHelpers.getCurrentUid(),
   };
   return event;
