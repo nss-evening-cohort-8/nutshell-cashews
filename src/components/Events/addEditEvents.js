@@ -53,7 +53,6 @@ const addNewEvent = () => {
 };
 
 // Update an Event
-
 const showUpdateForm = (e) => {
   const idToEdit = e.target.dataset.editId;
   eventsData.getSingleEvent(idToEdit)

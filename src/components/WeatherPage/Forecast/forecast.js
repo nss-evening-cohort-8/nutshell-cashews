@@ -1,24 +1,13 @@
 import $ from 'jquery';
-// import createForecastCard from '../ForecastCard/forecastCard';
 import weatherData from '../../../data/weatherData';
 import './FiveDayForecast.scss';
 
-// const createFiveDayForecast = (forecastArray) => {
-//   let domString = '<ul class="forecast-array">';
-//   forecastArray.forEach((forecast) => {
-//     domString += createForecastCard(forecast);
-//   });
-//   domString += '</ul>';
-//   return domString;
-// };
 
 const printForecast = (allWeatherDataObject) => {
   let forecastCardString = '';
   let i = 0;
   allWeatherDataObject.data.forEach((forecastCard) => {
     i += 1;
-    // eslint-disable-next-line no-unused-expressions
-    // ($('#day1') ? $('#day1').html('') : $('#day1').html(''));
     if (i > 1) {
       forecastCardString += `
     <li id="day${i}" class="card mr-5 ml-5 forecastCard d-flex justify-content-center">
@@ -42,7 +31,6 @@ const printForecast = (allWeatherDataObject) => {
     `;
       $('#forecast-container').html(forecastCardString);
     }
-    // return forecastCardString;
   });
 };
 
@@ -53,8 +41,6 @@ const getForecastLocation = (e) => {
       console.log(allWeatherDataObject);
       printForecast(allWeatherDataObject);
     })
-    // console.log(result);
-    // printSingleLocation(singleLocation);
     .catch((error) => {
       console.error('error in getting forecast location', error);
     });
