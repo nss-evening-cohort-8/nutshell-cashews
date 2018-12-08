@@ -6,18 +6,20 @@ import './events.scss';
 
 const formBuilder = (theEvent) => {
   const form = `
+<div id="eventsForm">
     <div class="form-group">
-    <label for="form-friend-name">Event:</label>
+    <label for="form-friend-name" id="form-labels">Event:</label>
     <input type="text" class="form-control" value="${theEvent.event}" id="form-event" placeholder="Event">
   </div>
   <div class="form-group">
-    <label for="form-friend-address">Location:</label>
+    <label for="form-friend-address" id="form-labels">Location:</label>
     <input type="text" class="form-control" value="${theEvent.location}" id="form-location" placeholder="Location">
   </div>
   <div class="form-group">
-    <label for="form-friend-email">Start Date:</label>
+    <label for="form-friend-email" id="form-labels">Start Date:</label>
     <input type="text" class="form-control datecheck" value="${theEvent.startDate}" id="form-startDate" placeholder="Start Date">
   </div>
+</div>
     `;
   return form;
 };
