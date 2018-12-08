@@ -133,7 +133,7 @@ const newMsgEvent = () => {
 
 const msgInput = () => {
   const domString = `<input id="msg-input" type="text" placeholder="message..."/>
-    <button id="submit-message">Submit</button>`;
+    <button id="submit-message" class="btn btn-primary">Submit</button>`;
   $('#msg-input-container').append(domString);
 };
 
