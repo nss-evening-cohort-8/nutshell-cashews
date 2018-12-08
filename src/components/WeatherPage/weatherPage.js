@@ -7,6 +7,8 @@ import './Style/weatherPage.scss';
 import forecastData from './FiveDayForecast/fiveDayForecast';
 
 const printSingleLocation = (location) => {
+  // eslint-disable-next-line no-unused-expressions
+  (location.pod === 'n' ? $('#background').attr('class', 'night') : $('#background').attr('class', 'day'));
   const locationString = `
   <div class="container mb-5 d-flex justify-content-center">
     <div id="currentLocation" class="mt-5 mr-4 ml-4 p-3 text-center">
