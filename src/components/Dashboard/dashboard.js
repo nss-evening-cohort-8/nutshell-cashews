@@ -26,7 +26,7 @@ const printDash = () => {
               convertTime = convertTime.replace(/:\d{2}(?!:)/, '');
               const dashString = `
               <div class="main-card-container d-flex flex-wrap justify-content-around">
-                <div class="card event-card" style="width: 18rem;">
+                <div class="card event-card">
                   <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted">Event:</h6>
                     <h5 class="card-title">${currentEvent.location}</h5>
@@ -34,7 +34,7 @@ const printDash = () => {
                     <p class="card-text">${currentEvent.startDate}</p>
                   </div>
                 </div>
-                <div class="card article-card" style="width: 18rem;">
+                <div class="card article-card">
                   <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted">Article:</h6>
                     <h5 class="card-title">${article.title}</h5>
@@ -42,7 +42,7 @@ const printDash = () => {
                     <p class="card-text"><a href="${article.url}">Link</a></p>
                   </div>
                 </div>
-                <div class="card message-card navbar-button-messages" style="width: 18rem;">
+                <div class="card message-card navbar-button-messages">
                   <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted">Most Recent Message:</h6>
                     <h5 class="card-title">${msg.displayName}</h5>
