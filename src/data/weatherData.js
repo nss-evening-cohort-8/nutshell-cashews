@@ -96,7 +96,7 @@ const getSingleWeatherData = zipcode => new Promise((resolve, reject) => {
 });
 
 const getForecastWeatherData = zipcode => new Promise((resolve, reject) => {
-  axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?postal_code=${zipcode}&days=3&units=I${weatherBitApi}`)
+  axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?postal_code=${zipcode}&days=4&units=I${weatherBitApi}`)
     .then((wholeWeatherObject) => {
       const allUsableWeatherInfoObject = wholeWeatherObject.data;
       // axios.get(`${firebaseUrl}/weather/${zipcode}.json`);

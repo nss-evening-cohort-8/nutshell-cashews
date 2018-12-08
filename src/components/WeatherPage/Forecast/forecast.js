@@ -14,9 +14,15 @@ import './FiveDayForecast.scss';
 
 const printForecast = (allWeatherDataObject) => {
   let forecastCardString = '';
+  let i = 0;
   allWeatherDataObject.data.forEach((forecastCard) => {
-    forecastCardString += `
-    <li class="card mr-5 ml-5 forecastCard d-flex justify-content-center">
+    i += 1;
+    // eslint-disable-next-line no-unused-expressions
+    // ($('#day1') ? $('#day1').html('') : $('#day1').html(''));
+    if (i > 1) {
+      forecastCardString += `
+    <li id="day${i}" class="card mr-5 ml-5 forecastCard d-flex justify-content-center">
+          <div class="text-center"><h5>${forecastCard.datetime}</h5></div>
           <div class="text-center"><h4>${allWeatherDataObject.city_name}</h4></div>
           <div class="text-center"><h3>${forecastCard.temp}</h3></div>
           <div class="d-flex justify-content-center">
@@ -34,7 +40,8 @@ const printForecast = (allWeatherDataObject) => {
         </div>
     </li>
     `;
-    $('#forecast-container').html(forecastCardString);
+      $('#forecast-container').html(forecastCardString);
+    }
     // return forecastCardString;
   });
 };
