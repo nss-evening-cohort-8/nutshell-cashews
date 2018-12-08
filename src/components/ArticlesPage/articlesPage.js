@@ -74,9 +74,7 @@ const deleteArticle = (e) => {
 };
 
 const styleFunction = () => {
-  const domString = `  <div id="articleAddButton">
-  <button id="show-article-form" class="btn btn-success">Add Article</button>
-  </div>
+  const domString = `
   <div id="add-edit-article"></div>
   <div id="single-article"></div>`;
   $('#articles').html(domString);
