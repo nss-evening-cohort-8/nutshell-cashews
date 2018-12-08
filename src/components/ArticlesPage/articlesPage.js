@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import articleData from '../../Helpers/data/articlesData';
+import authHelpers from '../../Helpers/authHelpers';
+
 
 const printArticles = (articles) => {
   let articleString = '';
@@ -49,8 +51,8 @@ const getSingleArticle = (e) => {
 // };
 
 const articlePage = () => {
-  // const uid = authHelpers.getCurrentUid();
-  articleData.getAllArticles()
+  const uid = authHelpers.getCurrentUid();
+  articleData.getAllArticles(uid)
     .then((articleArray) => {
       printArticles(articleArray);
     })
