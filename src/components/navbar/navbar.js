@@ -7,12 +7,7 @@ import initializeArticlePage from '../ArticlesPage/articlesPage';
 import showAddFormArticle from '../ArticlesPage/addEditArticles';
 
 const navbarEvents = () => {
-<<<<<<< HEAD
   $('#nav-links').on('click', (e) => {
-=======
-  $('#nav-container').on('click', (e) => {
-    console.log(e.target.id);
->>>>>>> master
     if (e.target.id === 'navbar-button-logout') {
       firebase.auth().signOut().then(() => {
         $('#auth').show();
