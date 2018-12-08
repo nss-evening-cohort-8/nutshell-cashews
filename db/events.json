@@ -9,13 +9,13 @@
     "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
     "event": "Holiday LIGHTS at Cheekwood",
     "startDate": "12/21/2018",
-    "location": "1200 Forrest Park Dr, Nashville, TN 37205"
+    "location": "Cheekwood Estate and Gardens"
   },
   "event3": {
     "userUid": "aFVB3S56qTUMMEWSZpgKQ6i3x0o2",
     "event": "Movie Series at TailGate Brewery",
     "startDate": "12/14/2018",
-    "location": "7300 Charlotte Pike, Nashville, TN 37209"
+    "location": "TailGate Brewery on Charlotte Pike"
   },
   "event4": {
     "userUid": "0dHr6i1TH3T0RzaV58fyfUAUrZp2",
@@ -36,7 +36,7 @@
     "location": "Kentucky"
   },
   "event7": {
-    "userUid": "Cg8UGw669QXcvcfghCjXVkTxBf32",
+    "userUid": "aFVB3S56qTUMMEWSZpgKQ6i3x0o2",
     "event": "Visit my grandparents",
     "startDate": "12/28/2018",
     "location": "Upstate NY"
@@ -57,7 +57,7 @@
     "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
     "event": "Gaylord Opryland’s A Country Christmas",
     "startDate": "12/18/2018",
-    "location": "2800 Opryland Dr, Nashville, TN 37214"
+    "location": "Gaylord Opryland"
   },
   "event11": {
     "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
