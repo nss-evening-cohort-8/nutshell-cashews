@@ -1,14 +1,74 @@
 {
   "event1": {
-    "userUid": "12345",
-    "event": "Bonfire at the beach",
-    "startDate": 1528763298535,
-    "location": "Ocean Beach"
+    "userUid": "0dHr6i1TH3T0RzaV58fyfUAUrZp2",
+    "event": "Nashville Predators vs. Ottawa Senators",
+    "startDate": "12/11/2018",
+    "location": "Bridgestone Arena"
   },
   "event2": {
-    "userUid": "12345",
-    "event": "Nap",
-    "startDate": 1528763298536,
-    "location": "NSS"
+    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "event": "Holiday LIGHTS at Cheekwood",
+    "startDate": "12/21/2018",
+    "location": "Cheekwood Estate and Gardens"
+  },
+  "event3": {
+    "userUid": "aFVB3S56qTUMMEWSZpgKQ6i3x0o2",
+    "event": "Movie Series at TailGate Brewery",
+    "startDate": "12/14/2018",
+    "location": "TailGate Brewery on Charlotte Pike"
+  },
+  "event4": {
+    "userUid": "0dHr6i1TH3T0RzaV58fyfUAUrZp2",
+    "event": "Nashville Predators vs. Vancouver Canucks",
+    "startDate": "12/13/2018",
+    "location": "Bridgestone Arena"
+  },
+  "event5": {
+    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "event": "Titans vs. Washington Redskins",
+    "startDate": "12/22/2018",
+    "location": "Nissan Stadium"
+  },
+  "event6": {
+    "userUid": "Cg8UGw669QXcvcfghCjXVkTxBf32",
+    "event": "Visit the in-laws",
+    "startDate": "12/30/2018",
+    "location": "Kentucky"
+  },
+  "event7": {
+    "userUid": "aFVB3S56qTUMMEWSZpgKQ6i3x0o2",
+    "event": "Visit my grandparents",
+    "startDate": "12/28/2018",
+    "location": "Upstate NY"
+  },
+  "event8": {
+    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "event": "Franklin American Mortgage Music City Bowl",
+    "startDate": "12/28/2018",
+    "location": "Nissan Stadium"
+  },
+  "event9": {
+    "userUid": "aFVB3S56qTUMMEWSZpgKQ6i3x0o2",
+    "event": "Company Christmas Party",
+    "startDate": "12/14/2018",
+    "location": "Acme Feed & Seed"
+  },
+  "event10": {
+    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "event": "Gaylord Opryland’s A Country Christmas",
+    "startDate": "12/18/2018",
+    "location": "Gaylord Opryland"
+  },
+  "event11": {
+    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "event": "A Christmas Story at TPAC",
+    "startDate": "12/19/2018",
+    "location": "Tennessee Performing Arts Center"
+  },
+  "event12": {
+    "userUid": "tjMG0OE3xRX3nnsH126sjOpVrEI3",
+    "event": "Visit Home",
+    "startDate": "12/22/2018",
+    "location": "Pell City, AL"
   }
 }
