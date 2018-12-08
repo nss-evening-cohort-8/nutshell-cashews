@@ -2,12 +2,16 @@ import $ from 'jquery';
 import 'bootstrap';
 import authHelpers from '../../Helpers/authHelpers';
 import eventsData from './eventsData';
+import './events.scss';
 
 const eventsPrinter = (eventsArray) => {
-  let eventsCards = '<button type="button" id="add-event-button" class="btn btn-success">Add New Event</button>';
+  let eventsCards = '<h1 id="events-Header">Events</h1>';
+  eventsCards += '<div class="text-center"><button type="button" id="add-event-button" class="btn btn-success mr-5">Add New Event</button></div>';
+  eventsCards += '<div class="container mt-4 d-flex flex-wrap">';
   eventsArray.forEach((event) => {
     eventsCards += `
-        <div class="card d-inline-block m-4" style="width: 18rem;">
+    <div class="col-auto mb-3">
+        <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">${event.event}</li>
     <li class="list-group-item">${event.location}</li>
@@ -16,8 +20,10 @@ const eventsPrinter = (eventsArray) => {
     <button type="button" class="btn btn-danger delete-event-btn" data-delete-id=${event.id}>Delete</button>
   </ul>
 </div>
-        `;
+</div>
+  `;
   });
+  eventsCards += '</div>';
   $('#events').html(eventsCards);
 };
 

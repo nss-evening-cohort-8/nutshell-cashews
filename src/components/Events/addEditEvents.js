@@ -2,6 +2,7 @@ import $ from 'jquery';
 import eventsData from './eventsData';
 import intializeEventsPage from './events';
 import authHelpers from '../../Helpers/authHelpers';
+import './events.scss';
 
 const formBuilder = (theEvent) => {
   const form = `
@@ -39,7 +40,7 @@ const buildNewEventForm = () => {
   };
   let domString = '<h1>Add New Event</h1>';
   domString += formBuilder(emptyEvent);
-  domString += '<button type="button" class="btn btn-primary" id="add-event">Save Event</button>';
+  domString += '<div class="text-center"><button type="button" class="btn btn-primary" id="add-event">Save Event</button></div>';
   $('#events').html(domString);
 };
 
@@ -60,9 +61,9 @@ const showUpdateForm = (e) => {
   const idToEdit = e.target.dataset.editId;
   eventsData.getSingleEvent(idToEdit)
     .then((singleEvent) => {
-      let theString = '<h1>Update EVent</h1>';
+      let theString = '<h1>Update Event</h1>';
       theString += formBuilder(singleEvent);
-      theString += `<button id="update-event" data-single-event-id=${singleEvent.id}>Update Event</button>`;
+      theString += `<div class="text-center"><button type="button" class="btn btn-primary" id="update-event" data-single-event-id=${singleEvent.id}>Update Event</button></div>`;
       $('#events').html(theString);
     })
     .catch((error) => {
