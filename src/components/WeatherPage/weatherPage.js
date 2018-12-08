@@ -4,6 +4,7 @@ import $ from 'jquery';
 import weatherData from '../../data/weatherData';
 import authHelpers from '../../Helpers/authHelpers';
 import './Style/weatherPage.scss';
+import forecastData from './FiveDayForecast/fiveDayForecast';
 
 const printSingleLocation = (location) => {
   const locationString = `
@@ -38,7 +39,7 @@ const getSingleLocation = (e) => {
   // const uid = authHelpers.getCurrentUid();
   weatherData.getSingleLocation(locationId)
     .then((singleLocation) => {
-      console.log(singleLocation);
+      // console.log(singleLocation);
       weatherData.makeLocationsFalse()
         .then(() => {
           weatherData.updatedIsCurrent(locationId, true)
@@ -48,7 +49,8 @@ const getSingleLocation = (e) => {
                   result.forEach((weatherObject) => {
                     printSingleLocation(weatherObject);
                   });
-                  console.log(result);
+                  forecastData.getForecastLocation(singleLocation.zipcode);
+                  // console.log(result);
                   // printSingleLocation(singleLocation);
                 });
             });
@@ -78,7 +80,7 @@ const buildDropdown = (locationsArray) => {
       // .then((zipCodeData) => {
       //   console.log(zipCodeData);
       // });
-      console.log(location);
+      // console.log(location);
       dropdown += `<div class="dropdown-item get-single" cursor="pointer" data-dropdown-id="${location.id}">${location.zipcode}</div>`;
     });
   } else {

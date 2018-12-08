@@ -17,7 +17,7 @@ const eventsPrinter = (eventsArray) => {
   </ul>
 </div>
         `;
-    console.log(event);
+    // console.log(event);
   });
   $('#events').html(eventsCards);
 };

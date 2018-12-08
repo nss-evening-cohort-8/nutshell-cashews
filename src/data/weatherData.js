@@ -28,25 +28,25 @@ const getAllLocations = userUid => new Promise((resolve, reject) => {
 });
 
 
-const getAllWeatherData = zipcode => new Promise((resolve, reject) => {
-  axios.get(`https://api.weatherbit.io/v2.0/current?&postal_code=${zipcode}&country=USUSunits=I${weatherBitApi}`)
-    .then((weatherInfo) => {
-      const weatherObject = weatherInfo.data;
-      const weatherArray = [];
-      if (weatherObject !== null) {
-        Object.keys(weatherObject).forEach((weatherId) => {
-          console.log(weatherId);
-          weatherObject[weatherId].id = weatherId;
-          weatherArray.push(weatherObject[weatherId]);
-        });
-      }
-      console.log(weatherArray);
-      resolve(weatherArray);
-    })
-    .catch((error) => {
-      reject(error);
-    });
-});
+// const getAllWeatherData = zipcode => new Promise((resolve, reject) => {
+//   axios.get(`https://api.weatherbit.io/v2.0/current?&postal_code=${zipcode}&country=USUSunits=I${weatherBitApi}`)
+//     .then((weatherInfo) => {
+//       const weatherObject = weatherInfo.data;
+//       const weatherArray = [];
+//       if (weatherObject !== null) {
+//         Object.keys(weatherObject).forEach((weatherId) => {
+//           console.log(weatherId);
+//           weatherObject[weatherId].id = weatherId;
+//           weatherArray.push(weatherObject[weatherId]);
+//         });
+//       }
+//       console.log(weatherArray);
+//       resolve(weatherArray);
+//     })
+//     .catch((error) => {
+//       reject(error);
+//     });
+// });
 
 // const getAllWeatherData = zipcode => new Promise((resolve, reject) => {
 //   axios.get(`https://api.weatherbit.io/v2.0/current?&postal_code=${zipcode}&country=USUSunits=I${weatherBitApi}`)
@@ -95,6 +95,23 @@ const getSingleWeatherData = zipcode => new Promise((resolve, reject) => {
     });
 });
 
+const getForecastWeatherData = zipcode => new Promise((resolve, reject) => {
+  axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?postal_code=${zipcode}&days=3&units=I${weatherBitApi}`)
+    .then((wholeWeatherObject) => {
+      const allUsableWeatherInfoObject = wholeWeatherObject.data;
+      // axios.get(`${firebaseUrl}/weather/${zipcode}.json`);
+      // singleWeatherData.id = zipcode;
+      // console.log(weatherObject);
+      resolve(allUsableWeatherInfoObject);
+    })
+    // .then(() => {
+
+    // })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
 const deleteLocation = locationId => axios.delete(`${firebaseUrl}/weather/${locationId}.json`);
 
 const addNewLocation = locationObject => axios.post(`${firebaseUrl}/weather.json`, JSON.stringify(locationObject));
@@ -109,7 +126,7 @@ const makeLocationsFalse = () => new Promise((resolve, reject) => {
     .then((locationsArray) => {
       locationsArray.forEach((location) => {
         const current = location.isCurrent;
-        console.log(current);
+        // console.log(current);
         if (current) {
           updatedIsCurrent(location.id, false)
             .then(() => {
@@ -134,6 +151,7 @@ export default {
   updateLocation,
   updatedIsCurrent,
   makeLocationsFalse,
-  getAllWeatherData,
+  // getAllWeatherData,
   getSingleWeatherData,
+  getForecastWeatherData,
 };
