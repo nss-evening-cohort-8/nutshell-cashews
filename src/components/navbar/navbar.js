@@ -32,7 +32,7 @@ const navbarEvents = () => {
     });
   });
 
-  $('.home').on('click', (e) => {
+  $('#navbar-button-main').on('click', (e) => {
     $('#auth').hide();
     $('#component-here').show();
     $('#messages').hide();
