@@ -18,7 +18,6 @@ const eventsPrinter = (eventsArray) => {
   </ul>
 </div>
         `;
-    console.log(event);
   });
   $('#events').html(eventsCards);
 };
@@ -30,7 +29,7 @@ const eventsPage = () => {
       eventsPrinter(eventsArray);
     })
     .catch((error) => {
-      console.log('error in getting events', error);
+      console.error('error in getting events', error);
     });
 };
 
