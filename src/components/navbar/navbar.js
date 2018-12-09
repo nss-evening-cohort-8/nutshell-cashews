@@ -5,6 +5,8 @@ import './navbar.scss';
 import messages from '../messages/messages';
 import initializeArticlePage from '../ArticlesPage/articlesPage';
 import showAddFormArticle from '../ArticlesPage/addEditArticles';
+import intializeEvents from '../Events/intializeEventsPage';
+
 
 const navbarEvents = () => {
   $('#navbar-button-logout').on('click', () => {
@@ -86,6 +88,7 @@ const navbarEvents = () => {
     $('#events').show();
     $('#weather').hide();
     $('#navbar-button-main').show();
+    intializeEvents();
     if (document.getElementById('navbar-button-messages').classList.contains('active')) {
       document.getElementById('navbar-button-messages').classList = 'btn btn-secondary';
     } else if (document.getElementById('navbar-button-articles').classList.contains('active')) {
