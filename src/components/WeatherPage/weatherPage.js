@@ -10,10 +10,10 @@ const printSingleLocation = (location) => {
   // eslint-disable-next-line no-unused-expressions
   (location.pod === 'n' ? $('#background').attr('class', 'night') : $('#background').attr('class', 'day'));
   const locationString = `
-  <div class="mb-5 d-flex justify-content-center">
-    <div id="currentLocation" class="mt-5 mr-4 ml-4 p-3 text-center">
-      <h1>${location.city_name}</h1>
-      <h3>${location.temp}</h3>
+  <div class="curent-weather mb-1 d-flex justify-content-center">
+    <div id="currentLocation" class="text-center">
+      <h3>${location.city_name}</h3>
+      <h1>${location.temp}</h1>
       <p>${location.pod === 'd' ? 'Day' : 'Night'}</p>
       <div class="d-flex justify-content-center">
         <img id="weatherIcon" class="" src="https://www.weatherbit.io/static/img/icons/${location.weather.icon}.png">
@@ -80,8 +80,8 @@ const buildDropdown = (locationsArray) => {
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">`;
   if (locationsArray.length) {
     locationsArray.forEach((location) => {
-      dropdown += `<div class="dropdown-item get-single text-center d-flex justify-content-between align-items-center" cursor="pointer" data-dropdown-id="${location.id}">${location.zipcode}`;
-      dropdown += `<button class=" text-center btn btn-danger delete-btn location-delete" data-delete-id=${location.id}>X</button></div>`;
+      dropdown += `<div class="dropdown-item get-single text-center d-flex justify-content-between align-items-center" data-dropdown-id="${location.id}">${location.zipcode}`;
+      dropdown += `<img class="trash location-delete" src="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-coloricon-1/21/52-512.png" alt="delete" data-delete-id=${location.id}></div>`;
     });
   } else {
     // eslint-disable-next-line max-len
@@ -130,7 +130,7 @@ const deleteLocation = (e) => {
 
 const bindEvents = () => {
   $('body').on('click', '.get-single', getSingleLocation);
-  $('body').on('click', '.delete-btn', deleteLocation);
+  $('body').on('click', '.trash', deleteLocation);
   $('body').on('click', '#show-location-form', printFormToDom);
   $('body').on('click', '#add-location', addNewLocation);
 };
@@ -149,6 +149,7 @@ const addNewLocation = () => {
   weatherData.addNewLocation(newLocation)
     .then(() => {
       $('#add-edit-location').html('').show();
+      $('#forecast-container').html('').show();
       // $('#weather').hide();
       initWeatherPage();
     })
