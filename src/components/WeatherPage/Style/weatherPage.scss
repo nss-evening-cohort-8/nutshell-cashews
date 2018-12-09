@@ -1,0 +1,25 @@
+#weatherIcon {
+  height: 250px;
+  width: 250px;
+  animation-name: fadeIn;
+  animation-duration: 2.5s;
+}
+
+// #currentLocation {
+//   height: 550px;
+//   width: 600px;
+// }
+
+#show-location-form {
+  // height: 26px;
+  // width: 26px;
+  margin-right: .5em;
+}
+
+#form-zip-code {
+  margin-right: 100px;
+}
+
+#day1 {
+  display: none;
+}

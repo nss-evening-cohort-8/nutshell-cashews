@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-// import initializeArticlesPage from '../ArticlesPage/articlesPage';
 
 import googleImage from './Sign-In-With-Google.png';
 import './auth.scss';
