@@ -5,8 +5,6 @@ import weatherData from '../../data/weatherData';
 import authHelpers from '../../Helpers/authHelpers';
 import './Style/weatherPage.scss';
 import forecastData from './Forecast/forecast';
-// eslint-disable-next-line import/no-cycle
-// import addEditLocations from './AddEditLocations/addEditLocations';
 
 const printSingleLocation = (location) => {
   // eslint-disable-next-line no-unused-expressions
@@ -20,22 +18,12 @@ const printSingleLocation = (location) => {
       <div class="d-flex justify-content-center">
         <img id="weatherIcon" class="" src="https://www.weatherbit.io/static/img/icons/${location.weather.icon}.png">
       </div>
-      <p>${location.weather.description}</p>
-      <div>
-        <button class="btn btn-danger delete-btn" data-delete-id=${location.id}>X</button>
-      </div>    
+      <p>${location.weather.description}</p>  
     </div>
   </div>
   `;
   $('#single-container').html(locationString);
   console.log(location);
-  // if (current === false) {
-  //   console.log('this is not current location');
-  //   current = true;
-  //   console.log(current);
-  // } else {
-  //   current = false;
-  // }
 };
 
 const getSingleLocation = (e) => {
@@ -61,8 +49,6 @@ const getSingleLocation = (e) => {
                   });
                   // gets forecast Data thru weatherbit api and prints the forecast cards;
                   forecastData.getForecastLocation(singleLocation.zipcode);
-                  // console.log(result);
-                  // printSingleLocation(singleLocation);
                 });
             });
         });
@@ -70,6 +56,19 @@ const getSingleLocation = (e) => {
     .catch((error) => {
       console.error('error in getting one friend', error);
     });
+};
+
+const printFormToDom = () => {
+  const emptyLocation = {
+    zipcode: '',
+  };
+
+  let domString = '';
+  domString += formBuilder(emptyLocation);
+  domString += '<div class="d-flex justify-content-center">';
+  domString += '<button class="btn btn-primary d-flex mt-2" id="add-location">Save Location</button>';
+  domString += '</div>';
+  $('#add-edit-location').html(domString).toggle();
 };
 
 const buildDropdown = (locationsArray) => {
@@ -81,18 +80,8 @@ const buildDropdown = (locationsArray) => {
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">`;
   if (locationsArray.length) {
     locationsArray.forEach((location) => {
-      // console.log(location);
-      // const cityZip = location.zipcode;
-      // weatherData.getSingleWeatherData(cityZip);
-      // .then((results) => {
-      //   const zipCode = results[0].city_name;
-      //   return zipCode;
-      // })
-      // .then((zipCodeData) => {
-      //   console.log(zipCodeData);
-      // });
-      // console.log(location);
-      dropdown += `<div class="dropdown-item get-single text-center" cursor="pointer" data-dropdown-id="${location.id}">${location.zipcode}</div>`;
+      dropdown += `<div class="dropdown-item get-single text-center d-flex justify-content-between align-items-center" cursor="pointer" data-dropdown-id="${location.id}">${location.zipcode}`;
+      dropdown += `<button class=" text-center btn btn-danger delete-btn location-delete" data-delete-id=${location.id}>X</button></div>`;
     });
   } else {
     // eslint-disable-next-line max-len
@@ -114,36 +103,11 @@ const formBuilder = (location) => {
   return form;
 };
 
-const printFormToDom = () => {
-  const emptyLocation = {
-    zipcode: '',
-  };
-
-  let domString = '';
-  domString += formBuilder(emptyLocation);
-  domString += '<div class="d-flex justify-content-center">';
-  domString += '<button class="btn btn-primary d-flex mt-2" id="add-location">Save Location</button>';
-  domString += '</div>';
-  $('#add-edit-location').html(domString).toggle();
-  // if ($('#add-edit-location').style.display === '') {
-  //   $('#show-location-form').textContent = '+';
-  // } else {
-  //   $('#show-location-form').textContent = '-';
-  // }
-};
-
 const weatherPage = () => {
   const uid = authHelpers.getCurrentUid();
   weatherData.getAllLocations(uid)
     .then((locationsArray) => {
       buildDropdown(locationsArray);
-      // locationsArray.forEach((locationObject) => {
-      //   const objectZip = locationObject.zipcode;
-      // console.log(objectZip);
-      // weatherData.getSingleWeatherData(objectZip)
-      // .then((results) => {
-      // console.log(results);
-      // console.log(locationsArray);
     })
     .catch((error) => {
       console.error('error in getting friends', error);
@@ -153,7 +117,6 @@ const weatherPage = () => {
 const deleteLocation = (e) => {
   // firebase id
   const idToDelete = e.target.dataset.deleteId;
-  // console.log(e.target.dataset);
   weatherData.deleteLocation(idToDelete)
     .then(() => {
       weatherPage();
@@ -164,25 +127,6 @@ const deleteLocation = (e) => {
       console.error('error in deleting friend', error);
     });
 };
-
-// const gettingZipFromForm = () => {
-//   weatherData.getSingleWeatherData($('#form-zip-code').val())
-//     .then((result) => {
-//       console.log(result);
-//       const name = result[0].city_name;
-//       console.log(name);
-//       const location = {
-//         '':
-//     {
-//       isCurrent: false,
-//       userUid: authHelpers.getCurrentUid(),
-//       zipcode: $('#form-zip-code').val(),
-//     },
-//       };
-//       Object.city_name = name;
-//       return location;
-//     });
-// };
 
 const bindEvents = () => {
   $('body').on('click', '.get-single', getSingleLocation);

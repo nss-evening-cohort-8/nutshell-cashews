@@ -5,11 +5,6 @@
   animation-duration: 2.5s;
 }
 
-// #currentLocation {
-//   height: 550px;
-//   width: 600px;
-// }
-
 #show-location-form {
   // height: 26px;
   // width: 26px;
@@ -20,6 +15,62 @@
   margin-right: 100px;
 }
 
-#day1 {
-  display: none;
+.location-delete {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 10px;
+  text-align: center;
 }
+
+.day {
+  background: url('../img/day.jpeg') repeat 0 0;
+  width: 100%;
+  margin: 0;
+  // text-align: center;
+  height: 100%;
+  // padding-top: 120px;
+  // background-size: cover;
+  // box-sizing: border-box;
+  -webkit-animation: slide 20s linear infinite;
+
+  // /* Set a specific height */
+  // min-height: 1500px; 
+
+  // /* Create the parallax scrolling effect */
+  // background-attachment: fixed;
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+}
+
+.night {
+  background: url('../img/night.jpeg');
+  /* Set a specific height */
+  // min-height: 1000px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@-webkit-keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: -400px 0; }
+}
+
+// .hero-bkg-animated {
+//   background: gray url(https://subtlepatterns.com/patterns/geometry2.png) repeat 0 0;
+//   width: 100%;
+//   margin: 0;
+//   text-align: center;
+//   height: 300px;
+//   padding-top: 120px;
+//   box-sizing: border-box;
+//   -webkit-animation: slide 20s linear infinite;
+// }
+
+// .hero-bkg-animated h1 {
+//   font-family: sans-serif;
+// }
