@@ -8,12 +8,26 @@
 </head>
 <body>
   <div id="navbar-here"></div>
-  <div id="auth"></div>
-  <div id="component-here"></div>
-  <div id="messages"></div>
-  <div id="articles"></div>
-  <div id="events"></div>
-  <div id="weather"></div>
+  <div id="background" class="">
+    <div id="auth"></div>
+    <div id="component-here"></div>
+    <div id="messages"></div>
+    <div id="articles">Welcome to the Articles Page</div>
+    <div id="events"></div>
+    <div id="weather">
+      <!-- <div class="stars"></div> -->
+      <!-- <div class="twinkling"></div> --> 
+      <div class="m-3 d-inline-flex">
+        <button id="show-location-form" class="btn btn-success"> + </button>
+        <div id='dropdown-container'></div>
+      </div>
+      <div id="add-edit-location" style="display:none"></div>
+      <div id='single-container' class="d-flex justify-content-center"></div>
+      <div class="d-flex justify-content-center">
+        <ul id='forecast-container' class="d-inline-flex"></ul>
+      </div>
+    </div>
+  </div>
   <div id="footer-here"></div>
 </body>
 </html>
