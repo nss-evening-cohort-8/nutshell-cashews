@@ -2,6 +2,7 @@ import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import './navbar.scss';
+import initWeatherPage from '../WeatherPage/weatherPage';
 import messages from '../messages/messages';
 import initializeArticlePage from '../ArticlesPage/articlesPage';
 import showAddFormArticle from '../ArticlesPage/addEditArticles';
@@ -108,6 +109,7 @@ const navbarEvents = () => {
     $('#articles').hide();
     $('#events').hide();
     $('#weather').show();
+    initWeatherPage.initWeatherPage();
     $('#navbar-button-main').show();
     if (document.getElementById('navbar-button-messages').classList.contains('active')) {
       document.getElementById('navbar-button-messages').classList = 'btn btn-secondary';

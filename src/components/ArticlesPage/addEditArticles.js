@@ -38,15 +38,12 @@ const buildAddForm = () => {
   domString += formBuilder(emptyArticle);
   domString += '<button id="add-article">Add Article</button>';
   $('#add-edit-article').html(domString).show();
-  // $('#articles').hide();
 };
 
 const addNewArticle = () => {
   const newArticle = gettingArticleFromForm();
   articlesData.addNewArticle(newArticle)
     .then(() => {
-      // $('#add-edit-article').html('').hide();
-      // $('#article').show();
       initializeArticlesPage.initializeArticlePage();
       buildAddForm();
     })
@@ -64,7 +61,6 @@ const showEditForm = (e) => {
       domString += formBuilder(singleArticle);
       domString += `<button id="edit-article" data-single-edit-id=${singleArticle.id}>Save Article</button>`;
       $('#add-edit-article').html(domString).show();
-      // $('#articles').hide();
     })
     .catch((error) => {
       console.error('error in getting single for edit', error);
@@ -76,9 +72,6 @@ const updateArticle = (e) => {
   const articleId = e.target.dataset.singleEditId;
   articlesData.updateArticle(updatedArticle, articleId)
     .then(() => {
-      // $('#add-edit-article').html('').hide();
-      // $('#single-article').html('');
-      // $('#articles').show();
       initializeArticlesPage.initializeArticlePage();
       buildAddForm();
     })
