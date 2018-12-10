@@ -100,7 +100,7 @@ const deleteEvent = (e) => {
 
 const bindEvents = () => {
   $('body').on('click', '#add-event', addNewEvent);
-  $('body').on('click', '#add-event-button', buildNewEventForm); // get clarification
+  $('body').on('click', '#add-event-button', buildNewEventForm);
   $('body').on('click', '.edit-event-btn', showUpdateForm);
   $('body').on('click', '#update-event', updateEvent);
   $('body').on('click', '.delete-event-btn', deleteEvent);
