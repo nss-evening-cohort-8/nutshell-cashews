@@ -2,6 +2,8 @@ import $ from 'jquery';
 import 'bootstrap';
 import authHelpers from '../../Helpers/authHelpers';
 import eventsData from './eventsData';
+import editImage from './edit.png';
+import deleteImage from './trash.png';
 import './events.scss';
 
 const eventsPrinter = (eventsArray) => {
@@ -12,15 +14,18 @@ const eventsPrinter = (eventsArray) => {
     eventsCards += `
     <div class="col-auto mb-3">
         <div class="card" style="width: 18rem;">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">${event.event}</li>
-    <li class="list-group-item">${event.location}</li>
-    <li class="list-group-item">${event.startDate}</li>
-    <button type="button" class="btn btn-primary edit-event-btn" data-edit-id=${event.id}>Edit</button>
-    <button type="button" class="btn btn-danger delete-event-btn" data-delete-id=${event.id}>Delete</button>
-  </ul>
-</div>
-</div>
+        <img class="card-img-top" src="${event.img}" alt="Card image cap">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item the-event">${event.event}</li>
+                <li class="list-group-item">${event.location}</li>
+                <li class="list-group-item">${event.startDate}</li>
+                <span id="event-card-images">
+                  <input type="image" class="edit-event-btn" data-edit-id=${event.id} src="${editImage}">
+                  <input type="image" class="delete-event-btn" data-delete-id=${event.id} src="${deleteImage}">
+                </span>
+            </ul>
+        </div>
+    </div>
   `;
   });
   eventsCards += '</div>';
