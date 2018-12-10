@@ -15,17 +15,17 @@ const eventsPrinter = (eventsArray) => {
     <div class="col-auto mb-3">
         <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="${event.img}" alt="Card image cap">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item the-event">${event.event}</li>
-    <li class="list-group-item">${event.location}</li>
-    <li class="list-group-item">${event.startDate}</li>
-    <span id="event-card-images">
-        <input type="image" class="edit-event-btn" data-edit-id=${event.id} src="${editImage}">
-        <input type="image" class="delete-event-btn" data-delete-id=${event.id} src="${deleteImage}">
-    </span>
-  </ul>
-</div>
-</div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item the-event">${event.event}</li>
+                <li class="list-group-item">${event.location}</li>
+                <li class="list-group-item">${event.startDate}</li>
+                <span id="event-card-images">
+                  <input type="image" class="edit-event-btn" data-edit-id=${event.id} src="${editImage}">
+                  <input type="image" class="delete-event-btn" data-delete-id=${event.id} src="${deleteImage}">
+                </span>
+            </ul>
+        </div>
+    </div>
   `;
   });
   eventsCards += '</div>';
