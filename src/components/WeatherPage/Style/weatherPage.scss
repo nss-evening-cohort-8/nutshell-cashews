@@ -18,6 +18,15 @@
   margin-right: 100px;
 }
 
+.weatherHome {
+  background: url('../img/weather.jpeg');
+  background-size: cover;
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  -webkit-animation: slide 20s linear infinite;
+}
+
 .day {
   background: url('../img/day.jpeg') repeat 0 0;
   width: 100%;

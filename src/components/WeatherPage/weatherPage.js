@@ -108,6 +108,7 @@ const weatherPage = () => {
   weatherData.getAllLocations(uid)
     .then((locationsArray) => {
       buildDropdown(locationsArray);
+      $('#background').attr('class', 'weatherHome');
     })
     .catch((error) => {
       console.error('error in getting friends', error);
