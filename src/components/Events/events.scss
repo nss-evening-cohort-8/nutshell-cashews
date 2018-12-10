@@ -46,3 +46,9 @@ button {
 .list-group:hover {
     background-color: lightgrey;
 }
+
+.card-img-top {
+    width: 100%;
+    height: 18vw;
+    object-fit: cover;
+}
