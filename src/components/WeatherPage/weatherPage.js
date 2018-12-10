@@ -85,7 +85,7 @@ const buildDropdown = (locationsArray) => {
     });
   } else {
     // eslint-disable-next-line max-len
-    noLocationMessage += '<div>You dont have a location selected. Please add a new location.</div>';
+    noLocationMessage += '<div class="no-location" ><h1>Please submit a new zip code.</h1></div>';
     printFormToDom();
   }
   dropdown += '</div></div>';
