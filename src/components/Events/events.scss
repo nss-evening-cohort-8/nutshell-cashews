@@ -25,3 +25,24 @@ button {
     font-weight: bold;
     font-size: 20px;
 }
+
+.edit-event-btn {
+    width: 32px;
+    height: 32px;
+    margin-left: 70px;
+}
+
+.delete-event-btn {
+    width: 32px;
+    height: 32px;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.the-event {
+    font-weight: bold;
+}
+
+.list-group:hover {
+    background-color: lightgrey;
+}

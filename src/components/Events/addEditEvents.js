@@ -7,6 +7,10 @@ import './events.scss';
 const formBuilder = (theEvent) => {
   const form = `
 <div id="eventsForm">
+  <div class="form-group">
+    <label for="form-friend-name" id="form-labels">Image:</label>
+    <input type="text" class="form-control" value="${theEvent.img}" id="form-image" placeholder="${theEvent.img}">
+  </div>
     <div class="form-group">
     <label for="form-friend-name" id="form-labels">Event:</label>
     <input type="text" class="form-control" value="${theEvent.event}" id="form-event" placeholder="Event">
@@ -26,6 +30,7 @@ const formBuilder = (theEvent) => {
 
 const gettingEventFromForm = () => {
   const event = {
+    img: $('#form-image').val(),
     event: $('#form-event').val(),
     location: $('#form-location').val(),
     startDate: $('#form-startDate').val(),
@@ -36,6 +41,7 @@ const gettingEventFromForm = () => {
 
 const buildNewEventForm = () => {
   const emptyEvent = {
+    img: 'https://www.iosicongallery.com/icons/google-calendar-2015-03-11/512.png',
     event: '',
     location: '',
     startDate: '',
