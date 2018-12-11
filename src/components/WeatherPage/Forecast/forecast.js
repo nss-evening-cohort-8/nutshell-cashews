@@ -35,10 +35,8 @@ const printForecast = (allWeatherDataObject) => {
 };
 
 const getForecastLocation = (e) => {
-  console.log(e);
   weatherData.getForecastWeatherData(e)
     .then((allWeatherDataObject) => {
-      console.log(allWeatherDataObject);
       printForecast(allWeatherDataObject);
     })
     .catch((error) => {
