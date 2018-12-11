@@ -109,6 +109,7 @@ const navbarEvents = () => {
     $('#articles').hide();
     $('#events').hide();
     $('#weather').show();
+    $('#forecast-container').html('').show();
     initWeatherPage.initWeatherPage();
     $('#navbar-button-main').show();
     if (document.getElementById('navbar-button-messages').classList.contains('active')) {
