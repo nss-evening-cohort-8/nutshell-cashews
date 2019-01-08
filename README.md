@@ -23,7 +23,7 @@ Each component was created by an individual user, with some shared fucntionality
 1. run the following command in your terminal to initiate the app: ```npm start```
 This should automatically open a new tab in your default browser and run the web app, which pulls data from the Firebase app you have created.
 
-![screenshot]()
+![screenshot](https://github.com/nss-evening-cohort-8/nutshell-cashews/blob/master/img/screenshot.PNG?raw=true)
 * Alternitavely, You can visit [here](https://nutshell-cashews.firebaseapp.com/)
 
 ## Notes
